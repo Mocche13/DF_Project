@@ -431,12 +431,7 @@
                  "target":  "PP.Finger2",
                  "position":  [0, -38, -38],
                 "delay": 1000
-              },
-              {
-								"action":  "sendEvent",
-                "event":  "goPlace",
-                "to":  "PP_SC"
-							}                      
+              }                      
             ]                  
           },
                              "pick":  {
@@ -466,7 +461,12 @@
                  "target":  "PP.Finger2",
                  "position":  [0, -38, -3],
                 "delay": 1500
-              }       
+              },
+              {
+				"action":  "sendEvent",
+                "event":  "goPlace",
+                "to":  "PP_SC"
+			  }       
             ]                   
           },
                              "place":  {
