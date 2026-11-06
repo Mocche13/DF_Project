@@ -463,9 +463,8 @@
                 "delay": 1500
               },
               {
-                "id": "action_go_pick",
 								"action":  "sendEvent",
-                "event":  "goPick",
+                "event":  "goPlace",
                 "to":  "PP_SC"
 							}       
             ]                   
