@@ -7,6 +7,8 @@
   "scene":  [
     "building",
     "B1",
+    "B2",
+    "B3",
     "part_01",
     "part_02",
     "part_03",
@@ -25,7 +27,12 @@
     "PP.Finger1",
     "PP.Finger2",
     "Grid",
-    "Box"
+    "Box",
+    "Stopper_1",
+    "Receiver_1",
+    "DiffuseSensorBox_1",
+    "Receiver_2",
+    "DiffuseSensorBox_2"
   ],
    "assets":  [
     {
@@ -82,6 +89,120 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B1",
+                                           "velocity":  [0, 0, -80]                         
+            }                     
+          }                 
+        }             
+      }
+    },
+    {
+      "id":  "B2",
+      "type": "https://w3id.org/ontoeng/factory#Conveyor",
+      "representations": [
+        {
+          "file": "ConveyorNew.glb",
+          "unit": 1
+        }
+      ],
+      "position": [1123.0000305175781, 1.9632969295441116e-11, 905],
+      "rotation": [-6.480078193068935e-7, 1.5707963267946832, 6.585445650999745e-7],
+      "placementRelTo": "building",
+      "properties": {
+        "mass":  0,
+          "restitution":  0.3,
+         "friction":  0.0,
+         "MotionType":  "ANIMATED"
+      },
+      "statechart": {
+                         "id":  "B2_SC",
+                         "initial":  "idle",
+                         "states":  {
+                               "idle":  {
+                                     "on":  {
+                                           "B2startF":  "forward",
+                            "B2startB":  "backward"                         
+            },
+                                     "entry":  {
+                                           "action":  "surfaceVelocity",
+                                           "target":  "B2",
+                                           "velocity":  [0, 0, 0]                         
+            }                     
+          },
+                               "forward":  {
+                                     "on":  {
+                                           "B2stop":  "idle"                         
+            },
+                                     "entry":  {
+                                           "action":  "surfaceVelocity",
+                                           "target":  "B2",
+                                           "velocity":  [0, 0, 80]                         
+            }                     
+          },
+                               "backward":  {
+                                     "on":  {
+                                           "B2stop":  "idle"                         
+            },
+                                     "entry":  {
+                                           "action":  "surfaceVelocity",
+                                           "target":  "B2",
+                                           "velocity":  [0, 0, -80]                         
+            }                     
+          }                 
+        }             
+      }
+    },
+        {
+      "id":  "B3",
+      "type": "https://w3id.org/ontoeng/factory#Conveyor",
+      "representations": [
+        {
+          "file": "ConveyorNew.glb",
+          "unit": 1
+        }
+      ],
+      "position": [2194.2,
+				-42.15143203735352,
+				21.02],
+      "rotation": [0, 0, 0],
+      "placementRelTo": "building",
+      "properties": {
+        "mass":  0,
+          "restitution":  0.3,
+         "friction":  0.0,
+         "MotionType":  "ANIMATED"
+      },
+      "statechart": {
+                         "id":  "B3_SC",
+                         "initial":  "idle",
+                         "states":  {
+                               "idle":  {
+                                     "on":  {
+                                           "B3startF":  "forward",
+                            "B3startB":  "backward"                         
+            },
+                                     "entry":  {
+                                           "action":  "surfaceVelocity",
+                                           "target":  "B3",
+                                           "velocity":  [0, 0, 0]                         
+            }                     
+          },
+                               "forward":  {
+                                     "on":  {
+                                           "B3stop":  "idle"                         
+            },
+                                     "entry":  {
+                                           "action":  "surfaceVelocity",
+                                           "target":  "B3",
+                                           "velocity":  [0, 0, 80]                         
+            }                     
+          },
+                               "backward":  {
+                                     "on":  {
+                                           "B3stop":  "idle"                         
+            },
+                                     "entry":  {
+                                           "action":  "surfaceVelocity",
+                                           "target":  "B3",
                                            "velocity":  [0, 0, -80]                         
             }                     
           }                 
@@ -277,8 +398,8 @@
           "unit": 1
         }
       ],
-      "position": [-870, 0, 0],
-      "rotation": [0, 0, 0],
+      "position": [67.45, 0, 908.26],
+      "rotation":[0, 0, 0],
       "placementRelTo": "building",
       "statechart": {
                          "id":  "PP_SC",
@@ -311,7 +432,7 @@
                  "position":  [0, -38, -38],
                 "delay": 1000
               }                         
-            ]                   
+            ]                  
           },
                              "pick":  {
                                  "on":  {
@@ -369,8 +490,13 @@
                  "target":  "PP.Finger2",
                  "position":  [0, -38, -38],
                 "delay": 1500
-              }                     
-            ]                   
+              },
+              {
+                 "action": "sendEvent",
+                 "event": "B2startF",
+                 "to": "B2_SC"
+              }
+            ]                                        
           }                 
         }               
       }
@@ -498,6 +624,252 @@
          "friction":  0.0,
          "MotionType":  "ANIMATED"
       }
-    }
+    },
+    {
+      "id": "Stopper_1",
+      "type": "https://w3id.org/ontoeng/factory#Artifact",
+      "position": [
+        -78.19273471832275,
+        229.99996185302734,
+        932.5881958007812
+      ],
+      "rotation": [
+        0,
+        0,
+        1.570800035717629
+      ],
+      "placementRelTo": "building",
+      "container": "building",
+      "representations": [
+        {
+          "file": "Stopper.glb",
+          "unit": 1
+        }
+      ],
+      "properties": {
+        "friction": 0.95,
+        "restitution": 0.1,
+        "MotionType": "ANIMATED"
+      },
+      "statechart": {
+        "id": "Stopper_1_SC",
+        "context": {},
+        "states": {
+          "Stopper_1_Down": {
+            "id": "Stopper_1_Down",
+            "meta": {
+              "type": "https://w3id.org/ontoeng/osph#ProductSimpleState"
+            },
+            "on": {
+              "Stopper1_Up": [
+                {
+                  "target": "#Stopper_1_Up"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "type": "ActionMoveTo",
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "target": "Stopper_1"
+              }
+            ],
+            "type": "atomic"
+          },
+          "Stopper_1_Up": {
+            "id": "Stopper_1_Up",
+            "meta": {
+              "type": "https://w3id.org/ontoeng/osph#ProductSimpleState"
+            },
+            "on": {
+              "Stopper1_Down": [
+                {
+                  "target": "#Stopper_1_Down"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "type": "ActionMoveTo",
+                "rotation": [
+                  0,
+                  0,
+                  1.5708
+                ],
+                "target": "Stopper_1"
+              }
+            ],
+            "type": "atomic"
+          }
+        },
+        "initial": "Stopper_1_Up"
+      }
+    },
+    {
+			"id": "Receiver_2",
+			"type": "https://w3id.org/ontoeng/factory#SensorBarrierReceiver",
+			"position": [0, -198, 12],
+			"rotation": [3.2310891488651735e-15, 3.141592653589793, 3.141592653589793],
+			"placementRelTo": "DiffuseSensorBox_2",
+			"parentObject": "DiffuseSensorBox_2",
+			"representations": [
+				{
+					"file": "Sensor2.glb",
+					"unit": 1
+				}
+			]
+		},
+		{
+			"id": "DiffuseSensorBox_2",
+			"type": "https://w3id.org/ontoeng/factory#SensorBarrier",
+			"position": [355.58, 221.03, 999.67],
+			"rotation": [-1.5707963267948966, 3.17154, 0],
+			"placementRelTo": "building",
+			"container": "building",
+			"representations": [
+				{
+					"file": "Sensor.glb",
+					"unit": 1
+				}
+			],
+			"statechart": {
+				"id": "Sensor2_SC",
+				"context": {},
+				"states": {
+					"Detecting": {
+						"id": "Detecting",
+						"meta": {
+							"type": "https://w3id.org/ontoeng/factory#SensorDetecting"
+						},
+						"on": {
+							"Object_removed": [
+								{
+									"target": "#Idle"
+								}
+							]
+						},
+						"entry": [
+							{
+								"action":  "sendEvent",
+                "event":  "B1startF",
+                "to":  "B1_SC"
+							},
+              {
+								"action":  "sendEvent",
+                "event":  "goRest",
+                "to":  "PP_SC"
+							}
+						],
+						"type": "atomic"
+					},
+					"Idle": {
+						"id": "Idle",
+						"meta": {
+							"type": "https://w3id.org/ontoeng/factory#SensorIdle"
+						},
+						"on": {
+							"Object_detected": [
+								{
+									"target": "#Detecting"
+								}
+							]
+						},
+						"type": "atomic"
+					}
+				},
+				"initial": "Idle"
+			}
+		},
+    {
+			"id": "Receiver_1",
+			"type": "https://w3id.org/ontoeng/factory#SensorBarrierReceiver",
+			"position": [0, -198, 12],
+			"rotation": [3.2310891488651735e-15, 3.141592653589793, 3.141592653589793],
+			"placementRelTo": "DiffuseSensorBox_1",
+			"parentObject": "DiffuseSensorBox_1",
+			"representations": [
+				{
+					"file": "Sensor2.glb",
+					"unit": 1
+				}
+			]
+		},
+		{
+			"id": "DiffuseSensorBox_1",
+			"type": "https://w3id.org/ontoeng/factory#SensorBarrier",
+			"position": [66.43, 221.03, 954.21],
+			"rotation": [
+				-1.5707963267948966,
+				-1.5899986130770583,
+				0
+			],
+			"placementRelTo": "building",
+			"container": "building",
+			"representations": [
+				{
+					"file": "Sensor.glb",
+					"unit": 1
+				}
+			],
+			"statechart": {
+				"id": "Sensor1_SC",
+				"context": {},
+				"states": {
+					"Detecting": {
+						"id": "Detecting",
+						"meta": {
+							"type": "https://w3id.org/ontoeng/factory#SensorDetecting"
+						},
+						"on": {
+							"Object_removed": [
+								{
+									"target": "#Idle"
+								}
+							]
+						},
+						"entry": [
+							{
+                "id": "action_stop_b1",
+								"action":  "sendEvent",
+                "event":  "B1stop",
+                "to":  "B1_SC"
+							},
+              {
+                "id": "action_go_pick",
+								"action":  "sendEvent",
+                "event":  "goPick",
+                "to":  "PP_SC"
+							}
+						],
+						"type": "atomic"
+					},
+					"Idle": {
+						"id": "Idle",
+						"meta": {
+							"type": "https://w3id.org/ontoeng/factory#SensorIdle"
+						},
+						"on": {
+							"Object_detected": [
+								{
+									"target": "#Detecting"
+								}
+							]
+						},
+						"type": "atomic"
+					}
+				},
+				"initial": "Idle"
+			}
+		}
+
+
+
+
+
   ]
 }
+
