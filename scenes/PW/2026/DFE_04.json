@@ -465,7 +465,8 @@
               {
 								"action":  "sendEvent",
                 "event":  "goPlace",
-                "to":  "PP_SC"
+                "to":  "PP_SC",
+                "delay": 3000
 							}       
             ]                   
           },
