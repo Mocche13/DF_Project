@@ -936,12 +936,11 @@
                   "action": "sendEvent",
                   "event": "B3startF",
                   "to": "B3_SC",
-                "condition": "context.pickCounter === 5"
+                "cond": "ispickCounterFive"
               }, 
                      {
                  "action": "assign",
-                 "property": "pickCounter",
-                 "assignment": { "pickCounter": "context.pickCounter + 1" }
+                 "assignment": { "pickCounter": "incrementCounter" }
               },
                      {
                  "action":  "moveTo",
