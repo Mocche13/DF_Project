@@ -32,7 +32,14 @@
     "Receiver_1",
     "DiffuseSensorBox_1",
     "Receiver_2",
-    "DiffuseSensorBox_2"
+    "DiffuseSensorBox_2",
+    "PP_2",
+    "PP.FloatingX_2",
+    "PP.FloatingZ_2",
+    "PP.FloatingY_2",
+    "PP.Gripper_2",
+    "PP.Finger1_2",
+    "PP.Finger2_2"
   ],
    "assets":  [
     {
@@ -870,7 +877,134 @@
 				},
 				"initial": "Idle"
 			}
-		}
+		},
+    {
+      "id":  "PP_2",
+      "type": "https://w3id.org/ontoeng/factory#Robot",
+      "representations": [
+        {
+          "file": "Pick_and_Place_Robot.glb",
+          "unit": 1
+        }
+      ],
+      "position": [2397.52, 0, 916.47],
+      "rotation":[0, 3.1415926535, 0],
+      "placementRelTo": "building",
+      "statechart": {
+                         "id":  "PP2_SC",
+                         "initial":  "rest",
+                         "context": {
+                              "pickCounter": 0
+                         },
+                         "states":  {
+                             "rest":  {
+                                 "on":  {
+               "goPick":  "pick" 
+            },
+                                 "entry":  [
+                                       {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingZ_2",
+                 "position":  [-120, 80, 0] 
+              },
+                                       {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingY_2",
+                 "position":  [-6, -40, -171]
+              },
+                     {
+                 "action":  "moveTo",
+                 "target":  "PP.Finger1_2",
+                 "position":  [0, -38, 38],
+                "delay": 1000
+              },
+                                       {
+                 "action":  "moveTo",
+                 "target":  "PP.Finger2_2",
+                 "position":  [0, -38, -38],
+                "delay": 1000
+              }                    
+            ]                  
+          },
+                             "pick":  {
+                                 "on":  {
+               "goPlace":  "place" ,
+               "goRest":  "rest" 
+            },
+                                 "entry":  [
+                     {
+                 "action": "assign",
+                 "property": "pickCounter",
+                 "value": "context.pickCounter + 1"
+              },
+                     {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingZ_2",
+                 "position":  [-120, 80, 0] 
+              },
+                     {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingY_2",
+                 "position":  [-6, -175, -171]
+              },
+                     {
+                 "action":  "moveTo",
+                 "target":  "PP.Finger1_2",
+                 "position":  [0, -38, 3],
+                "delay": 1500
+              },
+                                       {
+                 "action":  "moveTo",
+                 "target":  "PP.Finger2_2",
+                 "position":  [0, -38, -3],
+                "delay": 1500
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "goPlace",
+                  "to":  "PP2_SC",
+                "delay": 3000
+							},
+                      {
+                 "action": "sendEvent",
+                 "event": "B3startF",
+                 "to": "B3_SC",
+                "cond": "context.pickCounter == 5"
+              }     
+            ]                   
+          },
+                             "place":  {
+                                 "on":  {
+               "goRest":  "rest" 
+            },
+                                 "entry":  [
+                                       {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingZ_2",
+                 "position":  [-120, 80, -200] 
+              },
+                        {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingY_2",
+                 "position":  [-6, -40, -171]
+              },
+                     {
+                 "action":  "moveTo",
+                 "target":  "PP.Finger1_2",
+                 "position":  [0, -38, 38],
+                "delay": 1500
+              },
+                                       {
+                 "action":  "moveTo",
+                 "target":  "PP.Finger2_2",
+                 "position":  [0, -38, -38],
+                "delay": 1500
+              }
+            ]                                        
+          }                 
+        }               
+      }
+    }
 
 
 
