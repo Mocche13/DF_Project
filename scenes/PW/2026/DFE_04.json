@@ -929,7 +929,7 @@
                              "pick":  {
                                 "always": {
                                     "action":  "sendEvent",
-                                    "event":  "B3StartB",
+                                    "event":  "B3startB",
                                     "to":  "B3_SC",
                                     "cond": {
                                         "type": "evaluateExpression",
