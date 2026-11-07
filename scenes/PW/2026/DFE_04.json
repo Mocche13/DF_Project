@@ -927,20 +927,24 @@
             ]                  
           },
                              "pick":  {
+                                "always": {
+                                    "action":  "sendEvent",
+                                    "event":  "B3StartB",
+                                    "to":  "B3_SC",
+                                    "cond": {
+                                        "type": "evaluateExpression",
+                                        "expr": "$pickCounter  >= 5"
+                                    }
+                                },
                                  "on":  {
                "goPlace":  "place" ,
                "goRest":  "rest" 
             },
                                  "entry":  [
-                      {
-                  "action": "sendEvent",
-                  "event": "B3startF",
-                  "to": "B3_SC",
-                "cond": "ispickCounterFive"
-              }, 
                      {
-                 "action": "assign",
-                 "assignment": { "pickCounter": "incrementCounter" }
+                  "action": "updateVariableAdd",
+                  "variable": "pickCounter",
+                  "value": 1
               },
                      {
                  "action":  "moveTo",
