@@ -895,7 +895,7 @@
                          "initial":  "rest",
                          "context": {
                               "pickCounter": 0
-                         }, 
+                         },
                          "states":  {
                              "rest":  {
                                  "on":  {
@@ -964,30 +964,19 @@
                   "event":  "goPlace",
                   "to":  "PP2_SC",
                 "delay": 3000
-							}     
+							},
+                      {
+                  "action": "sendEvent",
+                  "event": "B3startF",
+                  "to": "B3_SC",
+                "cond": "context.pickCounter === 5"
+              }     
             ]                   
           },
                              "place":  {
                                  "on":  {
                "goRest":  "rest" 
             },
-            "always": [
-                  {
-                      "guard": "context.pickCounter == 5",
-                      "actions": [
-                          {
-                              "action": "sendEvent",
-                              "event": "B3startB", 
-                              "to": "B3_SC"
-                          },
-                          {
-                              "action": "assign",
-                              "property": "pickCounter",
-                              "value": 0
-                          }
-                      ]
-                  }
-              ],
                                  "entry":  [
                                        {
                  "action":  "moveTo",
