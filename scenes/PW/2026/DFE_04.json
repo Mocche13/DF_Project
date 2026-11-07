@@ -932,10 +932,16 @@
                "goRest":  "rest" 
             },
                                  "entry":  [
+                      {
+                  "action": "sendEvent",
+                  "event": "B3startF",
+                  "to": "B3_SC",
+                "cond": "isCounterFive"
+              }, 
                      {
                  "action": "assign",
                  "property": "pickCounter",
-                 "value": "context.pickCounter + 1"
+                 "assignment": { "pickcounter": "increment" }
               },
                      {
                  "action":  "moveTo",
@@ -964,13 +970,7 @@
                   "event":  "goPlace",
                   "to":  "PP2_SC",
                 "delay": 3000
-							},
-                      {
-                  "action": "sendEvent",
-                  "event": "B3startF",
-                  "to": "B3_SC",
-                "cond": "context.pickCounter === 5"
-              }     
+							}    
             ]                   
           },
                              "place":  {
