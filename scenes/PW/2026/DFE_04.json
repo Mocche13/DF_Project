@@ -928,7 +928,7 @@
           },
                              "pick":  {
                                 "always": {
-                                    "target": "place",
+                                    "target": "placeL",
                                     "cond": {
                                         "type": "evaluateExpression",
                                         "expr": "$pickCounter >= 5"
@@ -942,7 +942,8 @@
                                       ]
                                     },
                                  "on":  {
-               "goPlace":  "place" ,
+               "goPlaceL":  "placeL" ,
+               "goPlaceR":  "placeR" ,
                "goRest":  "rest" 
             },
                                  "entry":  [
