@@ -515,7 +515,7 @@
                     "action":  "moveTo",
                     "target":  "PP.FloatingX3",
                     "position":  [-244, 369, 114],
-                    "rotation": [0, 3.1415926535, 0]
+                    "rotation": [0, 4.7124, 0]
               },
                      {
                  "action":  "moveTo",
@@ -610,7 +610,7 @@
                  "action":  "moveTo",
                  "target":  "PP.FloatingX3",
                  "position":  [-244, 369, 200],
-                 "rotation": [0, 3.1415926535, 0]
+                 "rotation": [0, 4.7124, 0]
               },             
                      {
                  "action":  "moveTo",
