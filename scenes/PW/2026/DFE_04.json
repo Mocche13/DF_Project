@@ -39,7 +39,14 @@
     "PP.FloatingY_2",
     "PP.Gripper_2",
     "PP.Finger1_2",
-    "PP.Finger2_2"
+    "PP.Finger2_2",
+    "PP_3",
+    "PP.FloatingX_3",
+    "PP.FloatingZ_3",
+    "PP.FloatingY_3",
+    "PP.Gripper_3",
+    "PP.Finger1_3",
+    "PP.Finger2_3"
   ],
    "assets":  [
     {
@@ -1099,6 +1106,248 @@
          "MotionType":  "ANIMATED",
          "isTrigger":  true
       }
+    },
+    {
+        "id":  "PP_3",
+        "type": "https://w3id.org/ontoeng/factory#Robot",
+        "representations": [
+            {
+            "file": "Pick_and_Place_Robot.glb",
+            "unit": 1
+            }
+        ],
+        "position": [2600.52, 0, 916.47],
+        "rotation":[0, 3.1415926535, 0],
+        "placementRelTo": "building",
+        "statechart": {
+                            "id":  "PP3_SC",
+                            "initial":  "rest",
+                            "context": {
+                                "pickCounter": 0
+                            },
+                            "states":  {
+                                "rest":  {
+                                    "on":  {
+                "goPick":  "pick" 
+                },
+                                    "entry":  [
+                                        {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingZ_3",
+                    "position":  [-120, 80, 0] 
+                },
+                                        {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingY_3",
+                    "position":  [-6, -40, -171]
+                },
+                                         {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingX_3",
+                    "position":  [-240, 370, -110]
+                },
+                        {
+                    "action":  "moveTo",
+                    "target":  "PP.Finger1_3",
+                    "position":  [0, -38, 38],
+                    "delay": 1000
+                },
+                                        {
+                    "action":  "moveTo",
+                    "target":  "PP.Finger2_3",
+                    "position":  [0, -38, -38],
+                    "delay": 1000
+                }                    
+                ]                  
+            },
+                                "pick":  {
+                                    "on":  {
+                "goPlaceL":  "placeL" ,
+                "goPlaceR":  "placeR" ,
+                "goRest":  "rest" 
+                },
+                                    "entry":  [
+                        {
+                    "action": "updateVariableAdd",
+                    "variable": "pickCounter",
+                    "value": 1
+                },
+                        {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingZ_3",
+                    "position":  [-120, 80, -200] 
+                },
+                        {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingY_3",
+                    "position":  [-6, -40, -171]
+                },
+                        {
+                    "action":  "moveTo",
+                    "target":  "PP.Finger1_3",
+                    "position":  [0, -38, 3],
+                    "delay": 1500
+                },
+                                        {
+                    "action":  "moveTo",
+                    "target":  "PP.Finger2_3",
+                    "position":  [0, -38, -3],
+                    "delay": 1500
+                }    
+                ]                   
+            },
+                                "placeL":  {
+                                    "on":  {
+                "goRest":  "rest" 
+                },
+                                    "entry":  [
+                                        {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingZ_3",
+                    "position":  [-120, 80, 0] 
+                },
+                            {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingY_3",
+                    "position":  [-6, -175, -171]
+                },
+                        {
+                    "action":  "moveTo",
+                    "target":  "PP.Finger1_3",
+                    "position":  [0, -38, 38],
+                    "delay": 1500
+                },
+                                        {
+                    "action":  "moveTo",
+                    "target":  "PP.Finger2_3",
+                    "position":  [0, -38, -38],
+                    "delay": 1500
+                }
+                ]                                        
+            },
+                                            "placeR":  {
+                                    "on":  {
+                "goRest":  "rest" 
+                },
+                                    "entry":  [
+                                        {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingZ_3",
+                    "position":  [-120, 80, 0] 
+                },
+                            {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingY_3",
+                    "position":  [-6, -175, -171]
+                },
+                            {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingX_3",
+                    "position":  [-244, 369, 220]
+                },
+                
+                        {
+                    "action":  "moveTo",
+                    "target":  "PP.Finger1_3",
+                    "position":  [0, -38, 38],
+                    "delay": 1500
+                },
+                                        {
+                    "action":  "moveTo",
+                    "target":  "PP.Finger2_3",
+                    "position":  [0, -38, -38],
+                    "delay": 1500
+                }
+                ]                                        
+            }                  
+            }               
+        }
+        },
+        {
+        "id":  "PP.FloatingX_3",
+        "type": "https://w3id.org/ontoeng/factory#RobotArm",
+        "representations": [
+            {
+            "file": "Pick_and_Place_Robot.glb#PP_Floating_X",
+            "unit": 1
+            }
+        ],
+        "placementRelTo": "PP_3",
+        "parentObject": "PP_3"
+        },
+        {
+        "id":  "PP.FloatingZ_3",
+        "type": "https://w3id.org/ontoeng/factory#RobotArm",
+        "representations": [
+            {
+            "file": "Pick_and_Place_Robot.glb#PP_Floating_Z",
+            "unit": 1
+            }
+        ],
+        "placementRelTo": "PP.FloatingX_3",
+        "parentObject": "PP.FloatingX_3"
+        },
+        {
+        "id":  "PP.FloatingY_3",
+        "type": "https://w3id.org/ontoeng/factory#RobotArm",
+        "representations": [
+            {
+            "file": "Pick_and_Place_Robot.glb#PP_Floating_Y",
+            "unit": 1
+            }
+        ],
+        "placementRelTo": "PP.FloatingZ_3",
+        "parentObject": "PP.FloatingZ_3"
+        },
+        {
+        "id":  "PP.Gripper_3",
+        "type": "https://w3id.org/ontoeng/factory#JawGripper",
+        "representations": [
+            {
+            "file": "Pick_and_Place_Robot.glb#PP_Gripper",
+            "unit": 1
+            }
+        ],
+        "placementRelTo": "PP.FloatingY_3",
+        "parentObject": "PP.FloatingY_3"
+        },
+        {
+        "id":  "PP.Finger1_3",
+        "type": "https://w3id.org/ontoeng/factory#JawFinger",
+        "representations": [
+            {
+            "file": "Pick_and_Place_Robot.glb#PP_Finger1",
+            "unit": 1
+            }
+        ],
+        "placementRelTo": "PP.Gripper_3",
+        "parentObject": "PP.Gripper_3",
+        "properties": {
+            "mass":  0,
+            "restitution":  0.0,
+            "friction":  0.0,
+            "MotionType":  "ANIMATED",
+            "isTrigger":  true
+        }
+        },
+        {
+        "id":  "PP.Finger2_3",
+        "type": "https://w3id.org/ontoeng/factory#JawFinger",
+        "representations": [
+            {
+            "file": "Pick_and_Place_Robot.glb#PP_Finger2",
+            "unit": 1
+            }
+        ],
+        "placementRelTo": "PP.Gripper_3",
+        "parentObject": "PP.Gripper_3",
+        "properties": {
+            "mass":  0,
+            "restitution":  0.0,
+            "friction":  0.0,
+            "MotionType":  "ANIMATED",
+            "isTrigger":  true
+        }
     }
 
 
