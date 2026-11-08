@@ -508,6 +508,11 @@
                  "target":  "PP.FloatingY3",
                  "position":  [-6, -40, -171]
               },
+                                        {
+                    "action":  "moveTo",
+                    "target":  "PP.FloatingX3",
+                    "position":  [-244, 369, 114]
+              },
                      {
                  "action":  "moveTo",
                  "target":  "PP.Finger13",
@@ -524,7 +529,8 @@
           },
                              "pick":  {
                                  "on":  {
-               "goPlace":  "place" ,
+               "goPlaceL":  "placeL" ,
+               "goPlaceR":  "placeR" ,
                "goRest":  "rest" 
             },
                                  "entry":  [
@@ -549,16 +555,10 @@
                  "target":  "PP.Finger23",
                  "position":  [0, -38, -3],
                 "delay": 1500
-              },
-                      {
-								  "action":  "sendEvent",
-                  "event":  "goPlace",
-                  "to":  "PP3_SC",
-                "delay": 3000
-							}       
+              }       
             ]                   
           },
-                             "place":  {
+                             "placeL":  {
                                  "on":  {
                "goRest":  "rest" 
             },
@@ -573,6 +573,40 @@
                  "target":  "PP.FloatingY3",
                  "position":  [-6, -40, -171]
               },
+                     {
+                 "action":  "moveTo",
+                 "target":  "PP.Finger13",
+                 "position":  [0, -38, 38],
+                "delay": 1500
+              },
+                                       {
+                 "action":  "moveTo",
+                 "target":  "PP.Finger23",
+                 "position":  [0, -38, -38],
+                "delay": 1500
+              }
+            ]                                        
+          },
+                             "placeR":  {
+                                 "on":  {
+               "goRest":  "rest" 
+            },
+                                 "entry":  [
+                                       {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingZ3",
+                 "position":  [-120, 80, -200] 
+              },
+                        {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingY3",
+                 "position":  [-6, -40, -171]
+              },
+                         {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingX3",
+                 "position":  [-244, 369, 200]
+              },             
                      {
                  "action":  "moveTo",
                  "target":  "PP.Finger13",
