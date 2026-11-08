@@ -487,11 +487,14 @@
         }
       ],
       "position": [2000.45, 0, 908.26],
-      "rotation":[0, 0, 0],
+      "rotation":[0, 3.1415926535, 0],
       "placementRelTo": "building",
       "statechart": {
                          "id":  "PP3_SC",
                          "initial":  "rest",
+                         "context": {
+                                "pickCounter": 0
+                            },
                          "states":  {
                              "rest":  {
                                  "on":  {
@@ -511,7 +514,8 @@
                                         {
                     "action":  "moveTo",
                     "target":  "PP.FloatingX3",
-                    "position":  [-244, 369, 114]
+                    "position":  [-244, 369, 114],
+                    "rotation": [0, 3.1415926535, 0]
               },
                      {
                  "action":  "moveTo",
@@ -605,7 +609,8 @@
                          {
                  "action":  "moveTo",
                  "target":  "PP.FloatingX3",
-                 "position":  [-244, 369, 200]
+                 "position":  [-244, 369, 200],
+                 "rotation": [0, 3.1415926535, 0]
               },             
                      {
                  "action":  "moveTo",
