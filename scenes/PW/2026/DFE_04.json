@@ -504,7 +504,7 @@
                                        {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZ3",
-                 "position":  [-120, 80, 0] 
+                 "position":  [-120, 80, -200] 
               },
                                        {
                  "action":  "moveTo",
@@ -541,7 +541,7 @@
                      {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZ3",
-                 "position":  [-120, 80, 0] 
+                 "position":  [-120, 80, -200] 
               },
                      {
                  "action":  "moveTo",
@@ -570,7 +570,7 @@
                                        {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZ3",
-                 "position":  [-120, 80, -200] 
+                 "position":  [-120, 80, 0] 
               },
                         {
                  "action":  "moveTo",
@@ -599,7 +599,7 @@
                                        {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZ3",
-                 "position":  [-120, 80, -200] 
+                 "position":  [-120, 80, 0] 
               },
                         {
                  "action":  "moveTo",
