@@ -33,14 +33,9 @@
     "DiffuseSensorBox_1",
     "Receiver_2",
     "DiffuseSensorBox_2",
-    "PP_2",
-    "PP.FloatingX_2",
-    "PP.FloatingZ_2",
-    "PP.FloatingY_2",
-    "PP.Gripper_2",
-    "PP.Finger1_2",
-    "PP.Finger2_2",
-    "PP_3",
+    "Receiver_3",
+    "DiffuseSensorBox_3",
+    "PP3",
     "PP.FloatingX3",
     "PP.FloatingZ3",
     "PP.FloatingY3",
@@ -174,9 +169,7 @@
           "unit": 1
         }
       ],
-      "position": [2194.2,
-				-42.15143203735352,
-				21.02],
+      "position": [2243.22, -36.63, 155.53],
       "rotation": [0, 0, 0],
       "placementRelTo": "building",
       "properties": {
@@ -730,6 +723,81 @@
       }
     },
     {
+			"id": "Receiver_3",
+			"type": "https://w3id.org/ontoeng/factory#SensorBarrierReceiver",
+			"position": [0, -198, 12],
+			"rotation": [3.2310891488651735e-15, 3.141592653589793, 3.141592653589793],
+			"placementRelTo": "DiffuseSensorBox_3",
+			"parentObject": "DiffuseSensorBox_3",
+			"representations": [
+				{
+					"file": "Sensor2.glb",
+					"unit": 1
+				}
+			]
+		},
+		{
+			"id": "DiffuseSensorBox_3",
+			"type": "https://w3id.org/ontoeng/factory#SensorBarrier",
+			"position": [2079.4, 221.03, 999.67],
+			"rotation": [-1.5707963267948966, 3.17154, 0],
+			"placementRelTo": "building",
+			"container": "building",
+			"representations": [
+				{
+					"file": "Sensor.glb",
+					"unit": 1
+				}
+			],
+			"statechart": {
+				"id": "Sensor2_SC",
+				"context": {},
+				"states": {
+					"Detecting": {
+						"id": "Detecting",
+						"meta": {
+							"type": "https://w3id.org/ontoeng/factory#SensorDetecting"
+						},
+						"on": {
+							"Object_removed": [
+								{
+									"target": "#Idle"
+								}
+							]
+						},
+						"entry": [
+							{
+								"action":  "sendEvent",
+                "event":  "B2stop",
+                "to":  "B2_SC"
+							},
+              {
+								"action":  "sendEvent",
+                "event":  "goPick",
+                "to":  "PP3_SC"
+							}
+						],
+						"type": "atomic"
+					},
+					"Idle": {
+						"id": "Idle",
+						"meta": {
+							"type": "https://w3id.org/ontoeng/factory#SensorIdle"
+						},
+						"on": {
+							"Object_detected": [
+								{
+									"target": "#Detecting"
+								}
+							]
+						},
+						"type": "atomic"
+					}
+				},
+				"initial": "Idle"
+			}
+		},
+    {
 			"id": "Receiver_2",
 			"type": "https://w3id.org/ontoeng/factory#SensorBarrierReceiver",
 			"position": [0, -198, 12],
@@ -746,7 +814,7 @@
 		{
 			"id": "DiffuseSensorBox_2",
 			"type": "https://w3id.org/ontoeng/factory#SensorBarrier",
-			"position": [355.58, 221.03, 999.67],
+			"position": [276.29, 221.03, 999.67],
 			"rotation": [-1.5707963267948966, 3.17154, 0],
 			"placementRelTo": "building",
 			"container": "building",
@@ -886,228 +954,6 @@
 			}
 		},
     {
-      "id":  "PP_2",
-      "type": "https://w3id.org/ontoeng/factory#Robot",
-      "representations": [
-        {
-          "file": "Pick_and_Place_Robot.glb",
-          "unit": 1
-        }
-      ],
-      "position": [2397.52, 0, 916.47],
-      "rotation":[0, 3.1415926535, 0],
-      "placementRelTo": "building",
-      "statechart": {
-                         "id":  "PP2_SC",
-                         "initial":  "rest",
-                         "context": {
-                              "pickCounter": 0
-                         },
-                         "states":  {
-                             "rest":  {
-                                 "on":  {
-               "goPick":  "pick" 
-            },
-                                 "entry":  [
-                                       {
-                 "action":  "moveTo",
-                 "target":  "PP.FloatingZ_2",
-                 "position":  [-120, 80, 0] 
-              },
-                                       {
-                 "action":  "moveTo",
-                 "target":  "PP.FloatingY_2",
-                 "position":  [-6, -40, -171]
-              },
-                     {
-                 "action":  "moveTo",
-                 "target":  "PP.Finger1_2",
-                 "position":  [0, -38, 38],
-                "delay": 1000
-              },
-                                       {
-                 "action":  "moveTo",
-                 "target":  "PP.Finger2_2",
-                 "position":  [0, -38, -38],
-                "delay": 1000
-              }                    
-            ]                  
-          },
-                             "pick":  {
-                                "always": {
-                                    "target": "placeL",
-                                    "cond": {
-                                        "type": "evaluateExpression",
-                                        "expr": "$pickCounter >= 5"
-                                    },
-                                    "actions": [
-                                        {
-                                            "action": "sendEvent",
-                                            "event": "B3startB",
-                                            "to": "B3_SC"
-                                        }
-                                      ]
-                                    },
-                                 "on":  {
-               "goPlaceL":  "placeL" ,
-               "goPlaceR":  "placeR" ,
-               "goRest":  "rest" 
-            },
-                                 "entry":  [
-                     {
-                  "action": "updateVariableAdd",
-                  "variable": "pickCounter",
-                  "value": 1
-              },
-                     {
-                 "action":  "moveTo",
-                 "target":  "PP.FloatingZ_2",
-                 "position":  [-120, 80, 0] 
-              },
-                     {
-                 "action":  "moveTo",
-                 "target":  "PP.FloatingY_2",
-                 "position":  [-6, -175, -171]
-              },
-                     {
-                 "action":  "moveTo",
-                 "target":  "PP.Finger1_2",
-                 "position":  [0, -38, 3],
-                "delay": 1500
-              },
-                                       {
-                 "action":  "moveTo",
-                 "target":  "PP.Finger2_2",
-                 "position":  [0, -38, -3],
-                "delay": 1500
-              },
-                      {
-								  "action":  "sendEvent",
-                  "event":  "goPlace",
-                  "to":  "PP2_SC",
-                "delay": 3000
-							}    
-            ]                   
-          },
-                             "place":  {
-                                 "on":  {
-               "goRest":  "rest" 
-            },
-                                 "entry":  [
-                                       {
-                 "action":  "moveTo",
-                 "target":  "PP.FloatingZ_2",
-                 "position":  [-120, 80, -200] 
-              },
-                        {
-                 "action":  "moveTo",
-                 "target":  "PP.FloatingY_2",
-                 "position":  [-6, -40, -171]
-              },
-                     {
-                 "action":  "moveTo",
-                 "target":  "PP.Finger1_2",
-                 "position":  [0, -38, 38],
-                "delay": 1500
-              },
-                                       {
-                 "action":  "moveTo",
-                 "target":  "PP.Finger2_2",
-                 "position":  [0, -38, -38],
-                "delay": 1500
-              }
-            ]                                        
-          }                 
-        }               
-      }
-    },
-    {
-      "id":  "PP.FloatingX_2",
-      "type": "https://w3id.org/ontoeng/factory#RobotArm",
-      "representations": [
-        {
-          "file": "Pick_and_Place_Robot.glb#PP_Floating_X",
-          "unit": 1
-        }
-      ],
-      "placementRelTo": "PP_2",
-      "parentObject": "PP_2"
-    },
-    {
-      "id":  "PP.FloatingZ_2",
-      "type": "https://w3id.org/ontoeng/factory#RobotArm",
-      "representations": [
-        {
-          "file": "Pick_and_Place_Robot.glb#PP_Floating_Z",
-          "unit": 1
-        }
-      ],
-      "placementRelTo": "PP.FloatingX_2",
-      "parentObject": "PP.FloatingX_2"
-    },
-    {
-      "id":  "PP.FloatingY_2",
-      "type": "https://w3id.org/ontoeng/factory#RobotArm",
-      "representations": [
-        {
-          "file": "Pick_and_Place_Robot.glb#PP_Floating_Y",
-          "unit": 1
-        }
-      ],
-      "placementRelTo": "PP.FloatingZ_2",
-      "parentObject": "PP.FloatingZ_2"
-    },
-    {
-      "id":  "PP.Gripper_2",
-      "type": "https://w3id.org/ontoeng/factory#JawGripper",
-      "representations": [
-        {
-          "file": "Pick_and_Place_Robot.glb#PP_Gripper",
-          "unit": 1
-        }
-      ],
-      "placementRelTo": "PP.FloatingY_2",
-      "parentObject": "PP.FloatingY_2"
-    },
-    {
-      "id":  "PP.Finger1_2",
-      "type": "https://w3id.org/ontoeng/factory#JawFinger",
-      "representations": [
-        {
-          "file": "Pick_and_Place_Robot.glb#PP_Finger1",
-          "unit": 1
-        }
-      ],
-      "placementRelTo": "PP.Gripper_2",
-      "parentObject": "PP.Gripper_2",
-      "properties": {
-        "mass":  0,
-          "restitution":  0.0,
-         "friction":  0.0,
-         "MotionType":  "ANIMATED",
-         "isTrigger":  true
-      }
-    },
-    {
-      "id":  "PP.Finger2_2",
-      "type": "https://w3id.org/ontoeng/factory#JawFinger",
-      "representations": [
-        {
-          "file": "Pick_and_Place_Robot.glb#PP_Finger2",
-          "unit": 1
-        }
-      ],
-      "placementRelTo": "PP.Gripper_2",
-      "parentObject": "PP.Gripper_2",
-      "properties": {
-        "mass":  0,
-          "restitution":  0.0,
-         "friction":  0.0,
-         "MotionType":  "ANIMATED",
-         "isTrigger":  true
-      }
-    },
-    {
       "id":  "PP3",
       "type": "https://w3id.org/ontoeng/factory#Robot",
       "representations": [
@@ -1116,7 +962,7 @@
           "unit": 1
         }
       ],
-      "position": [2000.45, 0, 908.26],
+      "position": [2175.6, 0, 922.35],
       "rotation":[0, 3.1415926535, 0],
       "placementRelTo": "building",
       "statechart": {
@@ -1131,11 +977,6 @@
                "goPick":  "pick" 
             },
                                  "entry":  [
-                                       {
-                 "action": "updateVariableAdd",
-                 "variable": "pickCounter",
-                 "value": 1
-                },
                                        {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZ3",
@@ -1173,6 +1014,11 @@
                "goRest":  "rest" 
             },
                                  "entry":  [
+                                  {
+                 "action": "updateVariableAdd",
+                 "variable": "pickCounter",
+                 "value": 1
+                },
                      {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZ3",
@@ -1194,8 +1040,34 @@
                  "target":  "PP.Finger23",
                  "position":  [0, -38, -3],
                 "delay": 1500
-              }       
-            ]                   
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "goPlaceL",
+                  "to":  "PP3_SC",
+                "delay": 3000,
+                "cond": {
+                            "type": "evaluateExpression",
+                            "expr": "$pickCounter > [5]"
+                        }
+							},
+              {
+                    "action":  "sendEvent",
+                    "event":  "goPlaceR",
+                    "to":  "PP3_SC",
+                  "delay": 3000,
+                "cond": {
+                            "type": "evaluateExpression",
+                            "expr": "$pickCounter <= [5]"
+                        }
+							}        
+            ],
+            "after": {
+              "3000": {
+                  "target": "placeL",
+                  "guard": { "type": "evaluateExpression", "expr": "$pickCounter > 5" }
+             } 
+            }                   
           },
                              "placeL":  {
                                  "on":  {
@@ -1223,7 +1095,19 @@
                  "target":  "PP.Finger23",
                  "position":  [0, -38, -38],
                 "delay": 1500
-              }
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "B2startF",
+                  "to":  "B2_SC",
+                "delay": 5000
+							},
+                      {
+								  "action":  "sendEvent",
+                  "event":  "goRest",
+                  "to":  "PP3_SC",
+                "delay": 5000
+							}
             ]                                        
           },
                              "placeR":  {

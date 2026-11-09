@@ -1040,38 +1040,20 @@
                  "target":  "PP.Finger23",
                  "position":  [0, -38, -3],
                 "delay": 1500
-              },
-                      {
-								  "action":  "sendEvent",
-                  "event":  "goPlaceL",
-                  "to":  "PP3_SC",
-                "delay": 3000,
-                "cond": {
-                            "type": "evaluateExpression",
-                            "expr": "$pickCounter > [5]"
-                        }
-							},
-              {
-                    "action":  "sendEvent",
-                    "event":  "goPlaceR",
-                    "to":  "PP3_SC",
-                  "delay": 3000,
-                "cond": {
-                            "type": "evaluateExpression",
-                            "expr": "$pickCounter <= [5]"
-                        }
-							},
-              {
-                    "action":  "sendEvent",
-                    "event":  "goPlaceR",
-                    "to":  "PP3_SC",
-                  "delay": 3000,
-                "cond": {
-                            "type": "evaluateExpression",
-                            "expr": "$pickCounter >= 5"
-                        }
-							}        
-            ]                   
+              }        
+            ],
+            "after": {
+              "3000": [
+                {
+                  "target": "placeL",
+                  "guard": { "type": "evaluateExpression", "expr": "$pickCounter > 5" }
+                },
+                {
+                  "target": "placeR",
+                  "guard": { "type": "evaluateExpression", "expr": "$pickCounter <= 5" }
+                }
+              ]
+            }                   
           },
                              "placeL":  {
                                  "on":  {
