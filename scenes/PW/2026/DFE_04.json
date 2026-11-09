@@ -1045,12 +1045,12 @@
             "after": {
               "3000": [
                 {
-                  "target":  "placeL",
-                  "guard": { "type": "evaluateExpression", "expr": "$pickCounter > 5" }
+                  "target": "placeL",
+                  "cond": { "type": "evaluateExpression", "expr": "$pickCounter > 5" }
                 },
                 {
                   "target": "placeR",
-                  "guard": { "type": "evaluateExpression", "expr": "$pickCounter <= 5" }
+                  "cond": { "type": "evaluateExpression", "expr": "$pickCounter <= 5" }
                 }
               ]
             }                   
