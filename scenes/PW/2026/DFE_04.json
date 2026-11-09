@@ -1045,11 +1045,11 @@
             "after": {
               "3000": [
                 {
-                  "target": "placeL",
+                   "target": "placeL",
                   "cond": { "type": "evaluateExpression", "expr": "$pickCounter > 5" }
                 },
                 {
-                  "target": "placeR",
+                   "target": "placeR",
                   "cond": { "type": "evaluateExpression", "expr": "$pickCounter <= 5" }
                 }
               ]
