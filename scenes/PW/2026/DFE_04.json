@@ -1045,7 +1045,7 @@
             "after": {
               "3000": [
                 {
-                  "target": "placeL",
+                  "target":  "placeL",
                   "guard": { "type": "evaluateExpression", "expr": "$pickCounter > 5" }
                 },
                 {
