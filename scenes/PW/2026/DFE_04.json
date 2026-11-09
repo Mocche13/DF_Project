@@ -978,11 +978,6 @@
             },
                                  "entry":  [
                                        {
-                 "action": "updateVariableAdd",
-                 "variable": "pickCounter",
-                 "value": 1
-                },
-                                       {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZ3",
                  "position":  [-120, 80, -200] 
@@ -1019,6 +1014,11 @@
                "goRest":  "rest" 
             },
                                  "entry":  [
+                                  {
+                 "action": "updateVariableAdd",
+                 "variable": "pickCounter",
+                 "value": 1
+                },
                      {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZ3",
@@ -1045,8 +1045,32 @@
 								  "action":  "sendEvent",
                   "event":  "goPlaceL",
                   "to":  "PP3_SC",
-                "delay": 3000
-							}       
+                "delay": 3000,
+                "cond": {
+                            "type": "evaluateExpression",
+                            "expr": "$pickCounter > [5]"
+                        }
+							},
+              {
+                    "action":  "sendEvent",
+                    "event":  "goPlaceR",
+                    "to":  "PP3_SC",
+                  "delay": 3000,
+                "cond": {
+                            "type": "evaluateExpression",
+                            "expr": "$pickCounter <= [5]"
+                        }
+							},
+              {
+                    "action":  "sendEvent",
+                    "event":  "goPlaceR",
+                    "to":  "PP3_SC",
+                  "delay": 3000,
+                "cond": {
+                            "type": "evaluateExpression",
+                            "expr": "$pickCounter >= 5"
+                        }
+							}        
             ]                   
           },
                              "placeL":  {
