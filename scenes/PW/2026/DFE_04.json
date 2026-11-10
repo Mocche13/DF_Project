@@ -103,7 +103,7 @@
                                         {
                                            "action":  "surfaceVelocity",
                                            "target":  "B1",
-                                           "velocity":  [0, 0, 80]                         
+                                           "velocity":  [0, 0, 100]                         
             },
             
                                         {
@@ -120,7 +120,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B1",
-                                           "velocity":  [0, 0, -80]                         
+                                           "velocity":  [0, 0, -100]                         
             }                     
           }                 
         }             
@@ -166,7 +166,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B2",
-                                           "velocity":  [0, 0, 100]                         
+                                           "velocity":  [0, 0, 110]                         
             }                     
           },
                                "backward":  {
@@ -176,7 +176,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B2",
-                                           "velocity":  [0, 0, -100]                         
+                                           "velocity":  [0, 0, -110]                         
             }                     
           }                 
         }             
@@ -1157,7 +1157,19 @@
                  "target":  "PP.Finger23",
                  "position":  [0, -38, -38],
                 "delay": 1500
-              }
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "B2startF",
+                  "to":  "B2_SC",
+                "delay": 5000
+							},
+                      {
+								  "action":  "sendEvent",
+                  "event":  "goRest",
+                  "to":  "PP3_SC",
+                "delay": 5000
+							}
             ]                                        
           }                 
         }               
