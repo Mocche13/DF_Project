@@ -81,21 +81,37 @@
                                            "B1startF":  "forward",
                             "B1startB":  "backward"                         
             },
-                                     "entry":  {
+                                     "entry":[
+                                        {
                                            "action":  "surfaceVelocity",
                                            "target":  "B1",
                                            "velocity":  [0, 0, 0]                         
-            }                     
+            },
+            
+                                        {
+                                            "action":  "sendEvent",
+                                            "event":  "switchOnYellow",
+                                            "to":  "TrafficLights_SC"
+							}  
+                                     ]                   
           },
                                "forward":  {
                                      "on":  {
                                            "B1stop":  "idle"                         
             },
-                                     "entry":  {
+                                     "entry":[
+                                        {
                                            "action":  "surfaceVelocity",
                                            "target":  "B1",
                                            "velocity":  [0, 0, 80]                         
-            }                     
+            },
+            
+                                        {
+                                            "action":  "sendEvent",
+                                            "event":  "switchOnGreen",
+                                            "to":  "TrafficLights_SC"
+							}  
+                                     ]                   
           },
                                "backward":  {
                                      "on":  {
@@ -150,7 +166,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B2",
-                                           "velocity":  [0, 0, 80]                         
+                                           "velocity":  [0, 0, 100]                         
             }                     
           },
                                "backward":  {
@@ -160,7 +176,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B2",
-                                           "velocity":  [0, 0, -80]                         
+                                           "velocity":  [0, 0, -100]                         
             }                     
           }                 
         }             
@@ -496,7 +512,7 @@
                         {
                  "action":  "moveTo",
                  "target":  "PP.FloatingY",
-                 "position":  [-6, -160, -171]
+                 "position":  [-6, -150, -171]
               },
                      {
                  "action":  "moveTo",
@@ -975,7 +991,9 @@
                          "id":  "PP3_SC",
                          "initial":  "rest",
                          "context": {
+                            "variables":{
                                 "pickCounter": 0
+                              }
                             },
                          "states":  {
                              "rest":  {
@@ -1020,11 +1038,16 @@
                "goRest":  "rest" 
             },
                                  "entry":  [
-                                  {
-                 "action": "updateVariableAdd",
-                 "variable": "pickCounter",
-                 "value": 1
-                },
+                                 {
+                    "type": "xstate.raise",
+                    "event": {
+                      "type": "updateVariableAdd",
+                      "payload": {
+                        "variable": "pickCounter",
+                        "value": 1
+                  }
+                }
+              },
                      {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZ3",
@@ -1276,11 +1299,7 @@
     {
 			"id": "SignalPole",
 			"type": "https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD1/OWL#IfcActuator",
-			"position": [
-				72.41000366210938,
-				-2.0557733293458114e-9,
-				378.7799987792969
-			],
+			"position": [ 1687.7, 0, -1258.27 ],
 			"rotation": [
 				-1.5707963267948966,
 				6.283185307179586,
