@@ -41,7 +41,9 @@
     "PP.FloatingY3",
     "PP.Gripper3",
     "PP.Finger13",
-    "PP.Finger23"
+    "PP.Finger23",
+    "Slide",
+    "CustomBox"
   ],
    "assets":  [
     {
@@ -1218,6 +1220,53 @@
          "friction":  0.0,
          "MotionType":  "ANIMATED",
          "isTrigger":  true
+      }
+    },
+    {
+			"id": "Slide",
+			"type": "https://w3id.org/ontoeng/factory#Artifact",
+			"position": [
+				-8.775444984436035,
+				21.58893394470215,
+				105.6555404663086
+			],
+			"rotation": [
+				-8.195617624554041e-7,
+				3.1415926535861978,
+				-1.0398798622043611e-7
+			],
+			"placementRelTo": "building",
+			"container": "building",
+			"representations": [
+				{
+					"file": "Slide.glb",
+					"unit": 1
+				}
+			],
+			"properties": {
+				"mass": 0,
+				"restitution": 0.3,
+				"friction": 0,
+				"MotionType": "ANIMATED"
+			}
+		},
+    {
+      "id":  "CustomBox",
+      "type": "https://w3id.org/ontoeng/factory#Artifact",
+      "representations": [
+        {
+          "file": "10840718Box.glb",
+          "unit": 1
+        }
+      ],
+      "position": [2200, 0, -1100],
+      "rotation": [0, 0, 0],
+      "placementRelTo": "building",
+      "properties": {
+        "mass":  0,
+          "restitution":  0.3,
+         "friction":  0.0,
+         "MotionType":  "ANIMATED"
       }
     }
 
