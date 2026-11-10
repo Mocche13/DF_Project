@@ -191,7 +191,7 @@
           "unit": 1
         }
       ],
-      "position": [2243.22, -36.63, 155.53],
+      "position": [2243.22, -72.15, 155.53],
       "rotation": [0, 0, 0],
       "placementRelTo": "building",
       "properties": {
@@ -1298,15 +1298,14 @@
           "unit": 1
         }
       ],
-      "position": [2245.13, 193.91, 910.89],
+      "position": [2245.13, 159.16, 884.84],
       "rotation": [0, 0, 0],
       "placementRelTo": "building",
       "properties": {
-        "mass":  0,
-          "restitution":  0.3,
-         "friction":  0.0,
-         "MotionType":  "ANIMATED"
-      }
+				"friction": 0.95,
+				"restitution": 0.1,
+				"mass": 1
+			}
     },
     {
 			"id": "SignalPole",
