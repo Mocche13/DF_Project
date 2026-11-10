@@ -1333,6 +1333,16 @@
 								{
 									"target": "#idle_4"
 								}
+							],
+              "switchOnYellow": [
+								{
+									"target": "#yellow"
+								}
+							],
+							"switchOnRed": [
+								{
+									"target": "#red"
+								}
 							]
 						},
 						"entry": [
@@ -1390,6 +1400,16 @@
 								{
 									"target": "#idle_4"
 								}
+							],
+              "switchOnGreen": [
+								{
+									"target": "#green"
+								}
+							],
+              "switchOnYellow": [
+								{
+									"target": "#yellow"
+								}
 							]
 						},
 						"entry": [
@@ -1417,6 +1437,16 @@
 							"switchOff": [
 								{
 									"target": "#idle_4"
+								}
+							],
+              "switchOnGreen": [
+								{
+									"target": "#green"
+								}
+							],
+							"switchOnRed": [
+								{
+									"target": "#red"
 								}
 							]
 						},
