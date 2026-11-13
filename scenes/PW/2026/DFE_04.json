@@ -496,6 +496,11 @@
                   "event":  "goPlace",
                   "to":  "PP_SC",
                 "delay": 3000
+							},
+                      {
+								  "action":  "sendEvent",
+                  "event":  "B2startF",
+                  "to":  "B2_SC"
 							}       
             ]                   
           },
@@ -525,11 +530,6 @@
                  "target":  "PP.Finger2",
                  "position":  [0, -38, -38],
                 "delay": 1500
-              },
-              {
-                 "action": "sendEvent",
-                 "event": "B2startF",
-                 "to": "B2_SC"
               }
             ]                                        
           }                 
@@ -1024,7 +1024,12 @@
                  "target":  "PP.Finger23",
                  "position":  [0, -38, -38],
                 "delay": 1000
-              }                    
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "Stopper1_Up",
+                  "to":  "Stopper_1_SC"
+							}                    
             ]                  
           },
                              "pick":  {
@@ -1124,12 +1129,6 @@
                   "event":  "goRest",
                   "to":  "PP3_SC",
                 "delay": 5000
-							},
-                      {
-								  "action":  "sendEvent",
-                  "event":  "Stopper1_Up",
-                  "to":  "Stopper_1_SC",
-                "delay": 5000
 							}
             ]                                        
           },
@@ -1166,12 +1165,6 @@
                  "position":  [0, -38, -38],
                 "delay": 1500
               },
-                      {
-								  "action":  "sendEvent",
-                  "event":  "Stopper1_Up",
-                  "to":  "Stopper_1_SC",
-                "delay": 5000
-							},
                       {
 								  "action":  "sendEvent",
                   "event":  "goRest",
