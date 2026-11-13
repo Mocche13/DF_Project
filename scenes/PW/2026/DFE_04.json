@@ -166,7 +166,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B2",
-                                           "velocity":  [0, 0, 110]                         
+                                           "velocity":  [0, 0, 130]                         
             }                     
           },
                                "backward":  {
@@ -1011,7 +1011,7 @@
                     "action":  "moveTo",
                     "target":  "PP.FloatingX3",
                     "position":  [-244, 369, 114],
-                    "rotation": [0, 4.7124, 0]
+                    "rotation": [0, -1.5708, 0]
               },
                      {
                  "action":  "moveTo",
@@ -1110,7 +1110,7 @@
 								  "action":  "sendEvent",
                   "event":  "B2startF",
                   "to":  "B2_SC",
-                 "delay": 2000
+                 "delay": 1000
 							}, 
                      {
                  "action":  "moveTo",
@@ -1151,7 +1151,7 @@
                  "action":  "moveTo",
                  "target":  "PP.FloatingX3",
                  "position":  [-244, 369, 200],
-                 "rotation": [0, 4.7124, 0]
+                 "rotation": [0, -1.5708, 0]
               },
                       {
 								  "action":  "sendEvent",
