@@ -1168,7 +1168,7 @@
               },
                       {
 								  "action":  "sendEvent",
-                  "event":  "Stopper1_Down",
+                  "event":  "Stopper1_Up",
                   "to":  "Stopper_1_SC",
                 "delay": 5000
 							},
