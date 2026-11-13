@@ -1076,13 +1076,7 @@
                   "event":  "Stopper1_Down",
                   "to":  "Stopper_1_SC",
                 "delay": 1500
-							},
-                      {
-								  "action":  "sendEvent",
-                  "event":  "B2startF",
-                  "to":  "B2_SC",
-                "delay": 3000
-							}        
+							}       
             ],
             "after": {
               "3000": [
@@ -1112,6 +1106,11 @@
                  "target":  "PP.FloatingY3",
                  "position":  [-6, -40, -171]
               },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "B2startF",
+                  "to":  "B2_SC"
+							}, 
                      {
                  "action":  "moveTo",
                  "target":  "PP.Finger13",
@@ -1152,7 +1151,12 @@
                  "target":  "PP.FloatingX3",
                  "position":  [-244, 369, 200],
                  "rotation": [0, 4.7124, 0]
-              },             
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "B2startF",
+                  "to":  "B2_SC"
+							} ,             
                      {
                  "action":  "moveTo",
                  "target":  "PP.Finger13",
