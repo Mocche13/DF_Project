@@ -663,11 +663,7 @@
     {
       "id": "Stopper_1",
       "type": "https://w3id.org/ontoeng/factory#Artifact",
-      "position": [
-        628.68,
-        230,
-        990.85
-      ],
+      "position": [1992.67, 230, 990.85],
       "rotation": [
         0,
         1.570800035717629,
@@ -1069,7 +1065,19 @@
                  "target":  "PP.Finger23",
                  "position":  [0, -38, -3],
                 "delay": 1500
-              }        
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "Stopper1_Down",
+                  "to":  "Stopper_1_SC",
+                "delay": 1500
+							},
+                      {
+								  "action":  "sendEvent",
+                  "event":  "B2startF",
+                  "to":  "B2_SC",
+                "delay": 3000
+							}        
             ],
             "after": {
               "3000": [
@@ -1113,14 +1121,14 @@
               },
                       {
 								  "action":  "sendEvent",
-                  "event":  "B2startF",
-                  "to":  "B2_SC",
+                  "event":  "goRest",
+                  "to":  "PP3_SC",
                 "delay": 5000
 							},
                       {
 								  "action":  "sendEvent",
-                  "event":  "goRest",
-                  "to":  "PP3_SC",
+                  "event":  "Stopper1_Up",
+                  "to":  "Stopper_1_SC",
                 "delay": 5000
 							}
             ]                                        
@@ -1160,8 +1168,8 @@
               },
                       {
 								  "action":  "sendEvent",
-                  "event":  "B2startF",
-                  "to":  "B2_SC",
+                  "event":  "Stopper1_Down",
+                  "to":  "Stopper_1_SC",
                 "delay": 5000
 							},
                       {
@@ -1304,7 +1312,7 @@
       "properties": {
 				"friction": 0.95,
 				"restitution": 0.1,
-				"mass": 1
+				"mass": 6
 			}
     },
     {
