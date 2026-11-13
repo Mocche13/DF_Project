@@ -1109,7 +1109,8 @@
                       {
 								  "action":  "sendEvent",
                   "event":  "B2startF",
-                  "to":  "B2_SC"
+                  "to":  "B2_SC",
+                 "delay": 2000
 							}, 
                      {
                  "action":  "moveTo",
@@ -1155,7 +1156,8 @@
                       {
 								  "action":  "sendEvent",
                   "event":  "B2startF",
-                  "to":  "B2_SC"
+                  "to":  "B2_SC",
+                 "delay": 2000
 							} ,             
                      {
                  "action":  "moveTo",
