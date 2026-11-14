@@ -1193,7 +1193,7 @@
 								  "action":  "sendEvent",
                   "event":  "B2startF",
                   "to":  "B2_SC",
-                 "delay": 500
+                 "delay": 100
 							}, 
                      {
                  "action":  "moveTo",
