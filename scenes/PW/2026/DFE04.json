@@ -41,7 +41,13 @@
     "PP.FloatingY3",
     "PP.Gripper3",
     "PP.Finger13",
-    "PP.Finger23"
+    "PP.Finger23",
+    "Slide",
+    "CustomBox",
+    "SignalPole",
+		"SignalPole.GreenLight",
+		"SignalPole.RedLight",
+		"SignalPole.YellowLight"
   ],
    "assets":  [
     {
@@ -75,21 +81,37 @@
                                            "B1startF":  "forward",
                             "B1startB":  "backward"                         
             },
-                                     "entry":  {
+                                     "entry":[
+                                        {
                                            "action":  "surfaceVelocity",
                                            "target":  "B1",
                                            "velocity":  [0, 0, 0]                         
-            }                     
+            },
+            
+                                        {
+                                            "action":  "sendEvent",
+                                            "event":  "switchOnYellow",
+                                            "to":  "TrafficLights_SC"
+							}  
+                                     ]                   
           },
                                "forward":  {
                                      "on":  {
                                            "B1stop":  "idle"                         
             },
-                                     "entry":  {
+                                     "entry":[
+                                        {
                                            "action":  "surfaceVelocity",
                                            "target":  "B1",
-                                           "velocity":  [0, 0, 80]                         
-            }                     
+                                           "velocity":  [0, 0, 100]                         
+            },
+            
+                                        {
+                                            "action":  "sendEvent",
+                                            "event":  "switchOnGreen",
+                                            "to":  "TrafficLights_SC"
+							}  
+                                     ]                   
           },
                                "backward":  {
                                      "on":  {
@@ -98,7 +120,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B1",
-                                           "velocity":  [0, 0, -80]                         
+                                           "velocity":  [0, 0, -100]                         
             }                     
           }                 
         }             
@@ -144,7 +166,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B2",
-                                           "velocity":  [0, 0, 80]                         
+                                           "velocity":  [0, 0, 130]                         
             }                     
           },
                                "backward":  {
@@ -154,7 +176,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B2",
-                                           "velocity":  [0, 0, -80]                         
+                                           "velocity":  [0, 0, -110]                         
             }                     
           }                 
         }             
@@ -169,7 +191,7 @@
           "unit": 1
         }
       ],
-      "position": [2243.22, -36.63, 155.53],
+      "position": [2243.22, -72.15, 155.53],
       "rotation": [0, 0, 0],
       "placementRelTo": "building",
       "properties": {
@@ -474,6 +496,11 @@
                   "event":  "goPlace",
                   "to":  "PP_SC",
                 "delay": 3000
+							},
+                      {
+								  "action":  "sendEvent",
+                  "event":  "B2startF",
+                  "to":  "B2_SC"
 							}       
             ]                   
           },
@@ -490,7 +517,7 @@
                         {
                  "action":  "moveTo",
                  "target":  "PP.FloatingY",
-                 "position":  [-6, -40, -171]
+                 "position":  [-6, -150, -171]
               },
                      {
                  "action":  "moveTo",
@@ -503,11 +530,6 @@
                  "target":  "PP.Finger2",
                  "position":  [0, -38, -38],
                 "delay": 1500
-              },
-              {
-                 "action": "sendEvent",
-                 "event": "B2startF",
-                 "to": "B2_SC"
               }
             ]                                        
           }                 
@@ -641,14 +663,10 @@
     {
       "id": "Stopper_1",
       "type": "https://w3id.org/ontoeng/factory#Artifact",
-      "position": [
-        -78.19273471832275,
-        229.99996185302734,
-        932.5881958007812
-      ],
+      "position": [1992.67, 230, 990.85],
       "rotation": [
         0,
-        0,
+        1.570800035717629,
         1.570800035717629
       ],
       "placementRelTo": "building",
@@ -685,7 +703,7 @@
                 "type": "ActionMoveTo",
                 "rotation": [
                   0,
-                  0,
+                  1.570800035717629,
                   0
                 ],
                 "target": "Stopper_1"
@@ -710,7 +728,7 @@
                 "type": "ActionMoveTo",
                 "rotation": [
                   0,
-                  0,
+                  1.570800035717629,
                   1.5708
                 ],
                 "target": "Stopper_1"
@@ -969,7 +987,9 @@
                          "id":  "PP3_SC",
                          "initial":  "rest",
                          "context": {
+                            "variables":{
                                 "pickCounter": 0
+                              }
                             },
                          "states":  {
                              "rest":  {
@@ -991,7 +1011,7 @@
                     "action":  "moveTo",
                     "target":  "PP.FloatingX3",
                     "position":  [-244, 369, 114],
-                    "rotation": [0, 4.7124, 0]
+                    "rotation": [0, -1.5708, 0]
               },
                      {
                  "action":  "moveTo",
@@ -1004,7 +1024,12 @@
                  "target":  "PP.Finger23",
                  "position":  [0, -38, -38],
                 "delay": 1000
-              }                    
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "Stopper1_Up",
+                  "to":  "Stopper_1_SC"
+							}                    
             ]                  
           },
                              "pick":  {
@@ -1014,11 +1039,16 @@
                "goRest":  "rest" 
             },
                                  "entry":  [
-                                  {
-                 "action": "updateVariableAdd",
-                 "variable": "pickCounter",
-                 "value": 1
-                },
+                                 {
+                    "type": "xstate.raise",
+                    "event": {
+                      "type": "updateVariableAdd",
+                      "payload": {
+                        "variable": "pickCounter",
+                        "value": 1
+                  }
+                }
+              },
                      {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZ3",
@@ -1043,30 +1073,22 @@
               },
                       {
 								  "action":  "sendEvent",
-                  "event":  "goPlaceL",
-                  "to":  "PP3_SC",
-                "delay": 3000,
-                "cond": {
-                            "type": "evaluateExpression",
-                            "expr": "$pickCounter > [5]"
-                        }
-							},
-              {
-                    "action":  "sendEvent",
-                    "event":  "goPlaceR",
-                    "to":  "PP3_SC",
-                  "delay": 3000,
-                "cond": {
-                            "type": "evaluateExpression",
-                            "expr": "$pickCounter <= [5]"
-                        }
-							}        
+                  "event":  "Stopper1_Down",
+                  "to":  "Stopper_1_SC",
+                "delay": 1500
+							}       
             ],
             "after": {
-              "3000": {
-                  "target": "placeL",
-                  "guard": { "type": "evaluateExpression", "expr": "$pickCounter > 5" }
-             } 
+              "3000": [
+                {
+                   "target": "placeL",
+                  "cond": { "type": "evaluateExpression", "expr": "$pickCounter > 5" }
+                },
+                {
+                   "target": "placeR",
+                  "cond": { "type": "evaluateExpression", "expr": "$pickCounter <= 5" }
+                }
+              ]
             }                   
           },
                              "placeL":  {
@@ -1084,6 +1106,12 @@
                  "target":  "PP.FloatingY3",
                  "position":  [-6, -40, -171]
               },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "B2startF",
+                  "to":  "B2_SC",
+                 "delay": 500
+							}, 
                      {
                  "action":  "moveTo",
                  "target":  "PP.Finger13",
@@ -1096,12 +1124,6 @@
                  "position":  [0, -38, -38],
                 "delay": 1500
               },
-                      {
-								  "action":  "sendEvent",
-                  "event":  "B2startF",
-                  "to":  "B2_SC",
-                "delay": 5000
-							},
                       {
 								  "action":  "sendEvent",
                   "event":  "goRest",
@@ -1129,8 +1151,14 @@
                  "action":  "moveTo",
                  "target":  "PP.FloatingX3",
                  "position":  [-244, 369, 200],
-                 "rotation": [0, 4.7124, 0]
-              },             
+                 "rotation": [0, -1.5708, 0]
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "B2startF",
+                  "to":  "B2_SC",
+                 "delay": 2000
+							} ,             
                      {
                  "action":  "moveTo",
                  "target":  "PP.Finger13",
@@ -1142,7 +1170,13 @@
                  "target":  "PP.Finger23",
                  "position":  [0, -38, -38],
                 "delay": 1500
-              }
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "goRest",
+                  "to":  "PP3_SC",
+                "delay": 5000
+							}
             ]                                        
           }                 
         }               
@@ -1233,7 +1267,227 @@
          "MotionType":  "ANIMATED",
          "isTrigger":  true
       }
-    }
+    },
+    {
+			"id": "Slide",
+			"type": "https://w3id.org/ontoeng/factory#Artifact",
+			"position": [
+				-8.775444984436035,
+				21.58893394470215,
+				105.6555404663086
+			],
+			"rotation": [
+				-8.195617624554041e-7,
+				3.1415926535861978,
+				-1.0398798622043611e-7
+			],
+			"placementRelTo": "building",
+			"container": "building",
+			"representations": [
+				{
+					"file": "Slide.glb",
+					"unit": 1
+				}
+			],
+			"properties": {
+				"mass": 0,
+				"restitution": 0.3,
+				"friction": 0,
+				"MotionType": "ANIMATED"
+			}
+		},
+    {
+      "id":  "CustomBox",
+      "type": "https://w3id.org/ontoeng/factory#Artifact",
+      "representations": [
+        {
+          "file": "10840718Box.glb",
+          "unit": 1
+        }
+      ],
+      "position": [2245.13, 159.16, 884.84],
+      "rotation": [0, 0, 0],
+      "placementRelTo": "building",
+      "properties": {
+				"friction": 0.95,
+				"restitution": 0.1,
+				"mass": 6
+			}
+    },
+    {
+			"id": "SignalPole",
+			"type": "https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD1/OWL#IfcActuator",
+			"position": [ 1687.7, 0, -1258.27 ],
+			"rotation": [
+				-1.5707963267948966,
+				6.283185307179586,
+				0
+			],
+			"placementRelTo": "building",
+			"container": "building",
+			"representations": [
+				{
+					"file": "SignalPole.glb",
+					"unit": 1
+				}
+			],
+			"properties": {
+				"MotionType": "ANIMATED",
+				"friction": 0.95,
+				"restitution": 0.3,
+				"mass": 1
+			},
+			"statechart": {
+				"id": "TrafficLights_SC",
+				"context": {},
+				"states": {
+					"green": {
+						"id": "green",
+						"meta": {
+							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
+						},
+						"on": {
+							"switchOff": [
+								{
+									"target": "#idle_4"
+								}
+							],
+              "switchOnYellow": [
+								{
+									"target": "#yellow"
+								}
+							],
+							"switchOnRed": [
+								{
+									"target": "#red"
+								}
+							]
+						},
+						"entry": [
+							{
+								"type": "ActionSetRepresentation",
+								"color": [
+									0,
+									1,
+									0
+								],
+								"intensity": 1,
+								"target": "SignalPole.GreenLight"
+							}
+						],
+						"exit": [
+							{
+								"type": "ActionSetRepresentation",
+								"intensity": 0.1,
+								"target": "SignalPole.GreenLight"
+							}
+						],
+						"type": "atomic"
+					},
+					"idle_4": {
+						"id": "idle_4",
+						"meta": {
+							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
+						},
+						"on": {
+							"switchOnYellow": [
+								{
+									"target": "#yellow"
+								}
+							],
+							"switchOnRed": [
+								{
+									"target": "#red"
+								}
+							],
+							"switchOnGreen": [
+								{
+									"target": "#green"
+								}
+							]
+						},
+						"type": "atomic"
+					},
+					"red": {
+						"id": "red",
+						"meta": {
+							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
+						},
+						"on": {
+							"switchOff": [
+								{
+									"target": "#idle_4"
+								}
+							],
+              "switchOnGreen": [
+								{
+									"target": "#green"
+								}
+							],
+              "switchOnYellow": [
+								{
+									"target": "#yellow"
+								}
+							]
+						},
+						"entry": [
+							{
+								"type": "ActionSetRepresentation",
+								"intensity": 1,
+								"target": "SignalPole.RedLight"
+							}
+						],
+						"exit": [
+							{
+								"type": "ActionSetRepresentation",
+								"intensity": 0.1,
+								"target": "SignalPole.RedLight"
+							}
+						],
+						"type": "atomic"
+					},
+					"yellow": {
+						"id": "yellow",
+						"meta": {
+							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
+						},
+						"on": {
+							"switchOff": [
+								{
+									"target": "#idle_4"
+								}
+							],
+              "switchOnGreen": [
+								{
+									"target": "#green"
+								}
+							],
+							"switchOnRed": [
+								{
+									"target": "#red"
+								}
+							]
+						},
+						"entry": [
+							{
+								"type": "ActionSetRepresentation",
+								"intensity": 1,
+								"target": "SignalPole.YellowLight"
+							}
+						],
+						"exit": [
+							{
+								"type": "ActionSetRepresentation",
+								"intensity": 0.1,
+								"target": "SignalPole.YellowLight"
+							}
+						],
+						"type": "atomic"
+					}
+				},
+				"initial": "idle_4"
+			}
+		}
 
   ]
 }
