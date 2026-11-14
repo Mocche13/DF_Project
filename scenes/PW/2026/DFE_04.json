@@ -12,7 +12,8 @@
     "PP.FloatingY3",
     "PP.Gripper3",
     "PP.Finger13",
-    "PP.Finger23"
+    "PP.Finger23",
+     "Stopper_1"
     ],
    "assets":  [
     {
@@ -314,6 +315,86 @@
          "friction":  0.0,
          "MotionType":  "ANIMATED",
          "isTrigger":  true
+      }
+    },
+    {
+      "id": "Stopper_1",
+      "type": "https://w3id.org/ontoeng/factory#Artifact",
+      "position": [1992.67, 230, 990.85],
+      "rotation": [
+        0,
+        1.570800035717629,
+        1.570800035717629
+      ],
+      "placementRelTo": "building",
+      "container": "building",
+      "representations": [
+        {
+          "file": "Stopper.glb",
+          "unit": 1
+        }
+      ],
+      "properties": {
+        "friction": 0.95,
+        "restitution": 0.1,
+        "MotionType": "ANIMATED"
+      },
+      "statechart": {
+        "id": "Stopper_1_SC",
+        "context": {},
+        "states": {
+          "Stopper_1_Down": {
+            "id": "Stopper_1_Down",
+            "meta": {
+              "type": "https://w3id.org/ontoeng/osph#ProductSimpleState"
+            },
+            "on": {
+              "Stopper1_Up": [
+                {
+                  "target": "#Stopper_1_Up"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "type": "ActionMoveTo",
+                "rotation": [
+                  0,
+                  1.570800035717629,
+                  0
+                ],
+                "target": "Stopper_1"
+              }
+            ],
+            "type": "atomic"
+          },
+          "Stopper_1_Up": {
+            "id": "Stopper_1_Up",
+            "meta": {
+              "type": "https://w3id.org/ontoeng/osph#ProductSimpleState"
+            },
+            "on": {
+              "Stopper1_Down": [
+                {
+                  "target": "#Stopper_1_Down"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "type": "ActionMoveTo",
+                "rotation": [
+                  0,
+                  1.570800035717629,
+                  1.5708
+                ],
+                "target": "Stopper_1"
+              }
+            ],
+            "type": "atomic"
+          }
+        },
+        "initial": "Stopper_1_Up"
       }
     }
   ]
