@@ -116,13 +116,13 @@
                      {
                  "action":  "moveTo",
                  "target":  "PP.Finger13",
-                 "position":  [0, -38, 38],
+                 "position":  [110, -38, -5],
                 "delay": 1000
               },
                                        {
                  "action":  "moveTo",
                  "target":  "PP.Finger23",
-                 "position":  [0, -38, -38],
+                 "position":  [-110, -38, -5],
                 "delay": 1000
               }                    
             ]                  
@@ -146,13 +146,13 @@
                      {
                  "action":  "moveTo",
                  "target":  "PP.Finger13",
-                 "position":  [0, -38, 3],
+                 "position":  [30, -38, -5],
                 "delay": 1500
               },
                                        {
                  "action":  "moveTo",
                  "target":  "PP.Finger23",
-                 "position":  [0, -38, -3],
+                 "position":  [-30, -38, -5],
                 "delay": 1500
               },
                       {
@@ -187,13 +187,13 @@
                      {
                  "action":  "moveTo",
                  "target":  "PP.Finger13",
-                 "position":  [0, -38, 38],
+                 "position":  [110, -38, -5],
                 "delay": 1500
               },
                                        {
                  "action":  "moveTo",
                  "target":  "PP.Finger23",
-                 "position":  [0, -38, -38],
+                 "position":  [-110, -38, -5],
                 "delay": 1500
               },
                       {
