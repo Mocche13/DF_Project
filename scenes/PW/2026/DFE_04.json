@@ -322,7 +322,7 @@
     {
       "id": "Stopper_1",
       "type": "https://w3id.org/ontoeng/factory#Artifact",
-      "position": [1795.2, 230, 990.85],
+      "position": [1850, 230, 990.85],
       "rotation": [
         0,
         1.570800035717629,
