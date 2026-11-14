@@ -427,6 +427,7 @@
 			],
 			"statechart": {
 				"id": "Sensor3_SC",
+        "initial": "Idle",
 				"context": {},
 				"states": {
 					"Detecting": {
@@ -469,8 +470,7 @@
 						},
 						"type": "atomic"
 					}
-				},
-				"initial": "Idle"
+				}
 			}
 		}
   ]
