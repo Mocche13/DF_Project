@@ -1193,7 +1193,7 @@
 								  "action":  "sendEvent",
                   "event":  "B2startF",
                   "to":  "B2_SC",
-                 "delay": 100
+                 "delay": 1000
 							}, 
                      {
                  "action":  "moveTo",
@@ -1240,7 +1240,7 @@
 								  "action":  "sendEvent",
                   "event":  "B2startF",
                   "to":  "B2_SC",
-                 "delay": 2000
+                 "delay": 1000
 							} ,             
                      {
                  "action":  "moveTo",
@@ -1360,7 +1360,7 @@
           "unit": 1
         }
       ],
-      "position": [2251, 159.16, 884.84],
+      "position": [2249.5, 159.16, 884.84],
       "rotation": [0, 0, 0],
       "placementRelTo": "building",
       "properties": {
