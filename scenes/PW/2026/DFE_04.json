@@ -13,6 +13,8 @@
     "PP.Gripper3",
     "PP.Finger13",
     "PP.Finger23",
+    "Receiver_3",
+    "DiffuseSensorBox_3",
      "Stopper_1"
     ],
    "assets":  [
@@ -396,6 +398,80 @@
         },
         "initial": "Stopper_1_Up"
       }
-    }
+    },{
+			"id": "Receiver_3",
+			"type": "https://w3id.org/ontoeng/factory#SensorBarrierReceiver",
+			"position": [0, -198, 12],
+			"rotation": [3.2310891488651735e-15, 3.141592653589793, 3.141592653589793],
+			"placementRelTo": "DiffuseSensorBox_3",
+			"parentObject": "DiffuseSensorBox_3",
+			"representations": [
+				{
+					"file": "Sensor2.glb",
+					"unit": 1
+				}
+			]
+		},
+		{
+			"id": "DiffuseSensorBox_3",
+			"type": "https://w3id.org/ontoeng/factory#SensorBarrier",
+			"position": [2079.4, 221.03, 999.67],
+			"rotation": [-1.5707963267948966, 3.17154, 0],
+			"placementRelTo": "building",
+			"container": "building",
+			"representations": [
+				{
+					"file": "Sensor.glb",
+					"unit": 1
+				}
+			],
+			"statechart": {
+				"id": "Sensor3_SC",
+				"context": {},
+				"states": {
+					"Detecting": {
+						"id": "Detecting",
+						"meta": {
+							"type": "https://w3id.org/ontoeng/factory#SensorDetecting"
+						},
+						"on": {
+							"Object_removed": [
+								{
+									"target": "#Idle"
+								}
+							]
+						},
+						"entry": [
+							{
+								"action":  "sendEvent",
+                "event":  "B2stop",
+                "to":  "B2_SC"
+							},
+              {
+								"action":  "sendEvent",
+                "event":  "goPick",
+                "to":  "PP3_SC"
+							}
+						],
+						"type": "atomic"
+					},
+					"Idle": {
+						"id": "Idle",
+						"meta": {
+							"type": "https://w3id.org/ontoeng/factory#SensorIdle"
+						},
+						"on": {
+							"Object_detected": [
+								{
+									"target": "#Detecting"
+								}
+							]
+						},
+						"type": "atomic"
+					}
+				},
+				"initial": "Idle"
+			}
+		}
   ]
 }
