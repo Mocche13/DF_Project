@@ -1360,7 +1360,7 @@
           "unit": 1
         }
       ],
-      "position": [2245.13, 159.16, 884.84],
+      "position": [2240, 159.16, 884.84],
       "rotation": [0, 0, 0],
       "placementRelTo": "building",
       "properties": {
