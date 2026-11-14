@@ -35,6 +35,8 @@
     "DiffuseSensorBox_2",
     "Receiver_3",
     "DiffuseSensorBox_3",
+    "Receiver_4",
+    "DiffuseSensorBox_4",
     "PP3",
     "PP.FloatingX3",
     "PP.FloatingZ3",
@@ -775,7 +777,7 @@
 				}
 			],
 			"statechart": {
-				"id": "Sensor2_SC",
+				"id": "Sensor3_SC",
 				"context": {},
 				"states": {
 					"Detecting": {
@@ -956,6 +958,81 @@
 								"action":  "sendEvent",
                 "event":  "goPick",
                 "to":  "PP_SC"
+							}
+						],
+						"type": "atomic"
+					},
+					"Idle": {
+						"id": "Idle",
+						"meta": {
+							"type": "https://w3id.org/ontoeng/factory#SensorIdle"
+						},
+						"on": {
+							"Object_detected": [
+								{
+									"target": "#Detecting"
+								}
+							]
+						},
+						"type": "atomic"
+					}
+				},
+				"initial": "Idle"
+			}
+		},
+    {
+			"id": "Receiver_3",
+			"type": "https://w3id.org/ontoeng/factory#SensorBarrierReceiver",
+			"position": [0, -198, 12],
+			"rotation": [3.2310891488651735e-15, 3.141592653589793, 3.141592653589793],
+			"placementRelTo": "DiffuseSensorBox_3",
+			"parentObject": "DiffuseSensorBox_3",
+			"representations": [
+				{
+					"file": "Sensor2.glb",
+					"unit": 1
+				}
+			]
+		},
+		{
+			"id": "DiffuseSensorBox_4",
+			"type": "https://w3id.org/ontoeng/factory#SensorBarrier",
+			"position": [2327.83, 146.15, -803.19],
+			"rotation": [-1.5707963267948966, 4.71239, 0],
+			"placementRelTo": "building",
+			"container": "building",
+			"representations": [
+				{
+					"file": "Sensor.glb",
+					"unit": 1
+				}
+			],
+			"statechart": {
+				"id": "Sensor4_SC",
+				"context": {},
+				"states": {
+					"Detecting": {
+						"id": "Detecting",
+						"meta": {
+							"type": "https://w3id.org/ontoeng/factory#SensorDetecting"
+						},
+						"on": {
+							"Object_removed": [
+								{
+									"target": "#Idle"
+								}
+							]
+						},
+						"entry": [
+							{
+								"action":  "sendEvent",
+                "event":  "B3stop",
+                "to":  "B3_SC"
+							},
+              {
+								"action":  "sendEvent",
+                "event":  "goPick",
+                "to":  "PPLarge_SC"
 							}
 						],
 						"type": "atomic"
@@ -1330,7 +1407,7 @@
           "unit": 1
         }
       ],
-      "position": [2175.6, 0, -156.85],
+      "position": [2181.89, 0, -713.81],
       "rotation":[0, 3.1415926535, 0],
       "placementRelTo": "building",
       "statechart": {
@@ -1426,7 +1503,7 @@
                          {
                  "action":  "moveTo",
                  "target":  "PP.FloatingXLarge",
-                 "position":  [-260, 369, 200],
+                 "position":  [-244, 369, 370],
                  "rotation": [0, -1.5708, 0]
               },             
                      {
@@ -1537,181 +1614,6 @@
          "MotionType":  "ANIMATED",
          "isTrigger":  true
       }
-    },
-    {
-			"id": "SignalPole",
-			"type": "https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD1/OWL#IfcActuator",
-			"position": [ 1687.7, 0, -1258.27 ],
-			"rotation": [
-				-1.5707963267948966,
-				6.283185307179586,
-				0
-			],
-			"placementRelTo": "building",
-			"container": "building",
-			"representations": [
-				{
-					"file": "SignalPole.glb",
-					"unit": 1
-				}
-			],
-			"properties": {
-				"MotionType": "ANIMATED",
-				"friction": 0.95,
-				"restitution": 0.3,
-				"mass": 1
-			},
-			"statechart": {
-				"id": "TrafficLights_SC",
-				"context": {},
-				"states": {
-					"green": {
-						"id": "green",
-						"meta": {
-							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
-						},
-						"on": {
-							"switchOff": [
-								{
-									"target": "#idle_4"
-								}
-							],
-              "switchOnYellow": [
-								{
-									"target": "#yellow"
-								}
-							],
-							"switchOnRed": [
-								{
-									"target": "#red"
-								}
-							]
-						},
-						"entry": [
-							{
-								"type": "ActionSetRepresentation",
-								"color": [
-									0,
-									1,
-									0
-								],
-								"intensity": 1,
-								"target": "SignalPole.GreenLight"
-							}
-						],
-						"exit": [
-							{
-								"type": "ActionSetRepresentation",
-								"intensity": 0.1,
-								"target": "SignalPole.GreenLight"
-							}
-						],
-						"type": "atomic"
-					},
-					"idle_4": {
-						"id": "idle_4",
-						"meta": {
-							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
-						},
-						"on": {
-							"switchOnYellow": [
-								{
-									"target": "#yellow"
-								}
-							],
-							"switchOnRed": [
-								{
-									"target": "#red"
-								}
-							],
-							"switchOnGreen": [
-								{
-									"target": "#green"
-								}
-							]
-						},
-						"type": "atomic"
-					},
-					"red": {
-						"id": "red",
-						"meta": {
-							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
-						},
-						"on": {
-							"switchOff": [
-								{
-									"target": "#idle_4"
-								}
-							],
-              "switchOnGreen": [
-								{
-									"target": "#green"
-								}
-							],
-              "switchOnYellow": [
-								{
-									"target": "#yellow"
-								}
-							]
-						},
-						"entry": [
-							{
-								"type": "ActionSetRepresentation",
-								"intensity": 1,
-								"target": "SignalPole.RedLight"
-							}
-						],
-						"exit": [
-							{
-								"type": "ActionSetRepresentation",
-								"intensity": 0.1,
-								"target": "SignalPole.RedLight"
-							}
-						],
-						"type": "atomic"
-					},
-					"yellow": {
-						"id": "yellow",
-						"meta": {
-							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
-						},
-						"on": {
-							"switchOff": [
-								{
-									"target": "#idle_4"
-								}
-							],
-              "switchOnGreen": [
-								{
-									"target": "#green"
-								}
-							],
-							"switchOnRed": [
-								{
-									"target": "#red"
-								}
-							]
-						},
-						"entry": [
-							{
-								"type": "ActionSetRepresentation",
-								"intensity": 1,
-								"target": "SignalPole.YellowLight"
-							}
-						],
-						"exit": [
-							{
-								"type": "ActionSetRepresentation",
-								"intensity": 0.1,
-								"target": "SignalPole.YellowLight"
-							}
-						],
-						"type": "atomic"
-					}
-				},
-				"initial": "idle_4"
-			}
-		}
-
+    }
   ]
 }

@@ -256,5 +256,182 @@
 				"mass": 6
 			}
     }
+    
+
+    ,
+    {
+			"id": "SignalPole",
+			"type": "https://standards.buildingsmart.org/IFC/DEV/IFC4/ADD1/OWL#IfcActuator",
+			"position": [ 1687.7, 0, -1258.27 ],
+			"rotation": [
+				-1.5707963267948966,
+				6.283185307179586,
+				0
+			],
+			"placementRelTo": "building",
+			"container": "building",
+			"representations": [
+				{
+					"file": "SignalPole.glb",
+					"unit": 1
+				}
+			],
+			"properties": {
+				"MotionType": "ANIMATED",
+				"friction": 0.95,
+				"restitution": 0.3,
+				"mass": 1
+			},
+			"statechart": {
+				"id": "TrafficLights_SC",
+				"context": {},
+				"states": {
+					"green": {
+						"id": "green",
+						"meta": {
+							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
+						},
+						"on": {
+							"switchOff": [
+								{
+									"target": "#idle_4"
+								}
+							],
+              "switchOnYellow": [
+								{
+									"target": "#yellow"
+								}
+							],
+							"switchOnRed": [
+								{
+									"target": "#red"
+								}
+							]
+						},
+						"entry": [
+							{
+								"type": "ActionSetRepresentation",
+								"color": [
+									0,
+									1,
+									0
+								],
+								"intensity": 1,
+								"target": "SignalPole.GreenLight"
+							}
+						],
+						"exit": [
+							{
+								"type": "ActionSetRepresentation",
+								"intensity": 0.1,
+								"target": "SignalPole.GreenLight"
+							}
+						],
+						"type": "atomic"
+					},
+					"idle_4": {
+						"id": "idle_4",
+						"meta": {
+							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
+						},
+						"on": {
+							"switchOnYellow": [
+								{
+									"target": "#yellow"
+								}
+							],
+							"switchOnRed": [
+								{
+									"target": "#red"
+								}
+							],
+							"switchOnGreen": [
+								{
+									"target": "#green"
+								}
+							]
+						},
+						"type": "atomic"
+					},
+					"red": {
+						"id": "red",
+						"meta": {
+							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
+						},
+						"on": {
+							"switchOff": [
+								{
+									"target": "#idle_4"
+								}
+							],
+              "switchOnGreen": [
+								{
+									"target": "#green"
+								}
+							],
+              "switchOnYellow": [
+								{
+									"target": "#yellow"
+								}
+							]
+						},
+						"entry": [
+							{
+								"type": "ActionSetRepresentation",
+								"intensity": 1,
+								"target": "SignalPole.RedLight"
+							}
+						],
+						"exit": [
+							{
+								"type": "ActionSetRepresentation",
+								"intensity": 0.1,
+								"target": "SignalPole.RedLight"
+							}
+						],
+						"type": "atomic"
+					},
+					"yellow": {
+						"id": "yellow",
+						"meta": {
+							"type": "http://www.learninglab.de/~dolog/fsm/fsm.owl#Simple"
+						},
+						"on": {
+							"switchOff": [
+								{
+									"target": "#idle_4"
+								}
+							],
+              "switchOnGreen": [
+								{
+									"target": "#green"
+								}
+							],
+							"switchOnRed": [
+								{
+									"target": "#red"
+								}
+							]
+						},
+						"entry": [
+							{
+								"type": "ActionSetRepresentation",
+								"intensity": 1,
+								"target": "SignalPole.YellowLight"
+							}
+						],
+						"exit": [
+							{
+								"type": "ActionSetRepresentation",
+								"intensity": 0.1,
+								"target": "SignalPole.YellowLight"
+							}
+						],
+						"type": "atomic"
+					}
+				},
+				"initial": "idle_4"
+			}
+		}
   ]
 }
