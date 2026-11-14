@@ -981,12 +981,12 @@
 			}
 		},
     {
-			"id": "Receiver_3",
+			"id": "Receiver_4",
 			"type": "https://w3id.org/ontoeng/factory#SensorBarrierReceiver",
 			"position": [0, -198, 12],
 			"rotation": [3.2310891488651735e-15, 3.141592653589793, 3.141592653589793],
-			"placementRelTo": "DiffuseSensorBox_3",
-			"parentObject": "DiffuseSensorBox_3",
+			"placementRelTo": "DiffuseSensorBox_4",
+			"parentObject": "DiffuseSensorBox_4",
 			"representations": [
 				{
 					"file": "Sensor2.glb",
