@@ -174,7 +174,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B2",
-                                           "velocity":  [0, 0, 130]                         
+                                           "velocity":  [0, 0, 110]                         
             }                     
           },
                                "backward":  {
