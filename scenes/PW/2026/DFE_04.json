@@ -1360,13 +1360,13 @@
           "unit": 1
         }
       ],
-      "position": [2249.5, 159.16, 884.84],
+      "position": [2249.5, 160, 884.84],
       "rotation": [0, 0, 0],
       "placementRelTo": "building",
       "properties": {
 				"friction": 0.95,
 				"restitution": 0.1,
-				"mass": 6
+				"mass": 10
 			}
     },
     {
