@@ -1366,7 +1366,7 @@
       "properties": {
 				"friction": 0.95,
 				"restitution": 0.1,
-				"mass": 10
+				"mass": 6
 			}
     },
     {
@@ -1426,6 +1426,16 @@
                "goRest":  "rest" 
             },
                                  "entry":  [
+                                  {
+                "action": "setMotionType",
+                "target": "part_01",
+                "MotionType": "ANIMATED"
+            },
+            {
+                "action": "setParent",
+                "parentObject": "CustomBox",
+                "childObject": "part_01"
+            },
                      {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZLarge",
