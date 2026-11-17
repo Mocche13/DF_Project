@@ -1373,7 +1373,7 @@
     {
       "id":  "Separator",
       "type": "https://w3id.org/ontoeng/factory#Artifact",
-      "position": [0, 0, -6],
+      "position": [2249.5, 157.83, 830.27],
 			"rotation": [0, 0, 0],
       "representations": [
         {
@@ -1381,7 +1381,7 @@
           "unit": 1
         }
       ],
-      "placementRelTo": "CustomBox",
+      "placementRelTo": "building",
       "parentObject": "CustomBox"
     },
     {
