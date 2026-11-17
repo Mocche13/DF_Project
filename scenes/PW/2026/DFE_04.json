@@ -1373,7 +1373,7 @@
     {
       "id":  "Separator",
       "type": "https://w3id.org/ontoeng/factory#Artifact",
-      "position": [0, 0, -0.06],
+      "position": [0, 0, -6],
 			"rotation": [0, 0, 0],
       "representations": [
         {
