@@ -45,6 +45,7 @@
     "PP.Finger13",
     "PP.Finger23",
     "CustomBox",
+    "Separator",
     "PPLarge",
     "PP.FloatingXLarge",
     "PP.FloatingZLarge",
@@ -1376,7 +1377,7 @@
 			"rotation": [0, 0, 0],
       "representations": [
         {
-          "file": "Separatpr.glb",
+          "file": "Separator.glb",
           "unit": 1
         }
       ],
