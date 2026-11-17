@@ -1370,6 +1370,23 @@
 			}
     },
     {
+      "id":  "Separator",
+      "type": "https://w3id.org/ontoeng/factory#Artifact",
+      "position": [0, 0, 0],
+			"rotation": [0, 0, 0],
+      "representations": [
+        {
+          "file": "Separatpr.glb",
+          "unit": 1
+        }
+      ],
+      "placementRelTo": "CustomBox",
+      "parentObject": "CustomBox",
+      "properties": {
+        "MotionType": "ANIMATED"
+      }
+    },
+    {
       "id":  "PPLarge",
       "type": "https://w3id.org/ontoeng/factory#Robot",
       "representations": [
