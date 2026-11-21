@@ -1032,7 +1032,8 @@
               {
 								"action":  "sendEvent",
                 "event":  "goPick",
-                "to":  "PPLarge_SC"
+                "to":  "PPLarge_SC",
+              "delay": 3000
 							}
 						],
 						"type": "atomic"
@@ -1113,8 +1114,16 @@
 								  "action":  "sendEvent",
                   "event":  "Stopper1_Up",
                   "to":  "Stopper_1_SC"
-							}                    
-            ]                  
+							}
+            ],
+              "after": {
+              "3000": [
+                {
+                   "target": "JobDone",
+                  "cond": { "type": "evaluateExpression", "expr": "$pickCounter >= 10" }
+                }
+              ]
+            }                                                      
           },
                              "pick":  {
                                  "on":  {
@@ -1262,8 +1271,20 @@
                 "delay": 5000
 							}
             ]                                        
-          }                 
-        }               
+          },
+                  "JobDone": {
+                    "on":  {
+               "goRest":  "rest" 
+            },
+                                 "entry":  [
+                                       {
+                  "action":  "sendEvent",
+                  "event":  "B3startB",
+                  "to":  "B3_SC"
+                    }
+                ]            
+              }               
+        }
       }
     },
     {
