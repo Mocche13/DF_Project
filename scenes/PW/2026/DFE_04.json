@@ -1387,7 +1387,7 @@
       "placementRelTo": "building",
       "properties": {
 				"friction": 0.95,
-				"restitution": 0.1,
+				"restitution": 0,
 				"mass": 6
 			}
     },
