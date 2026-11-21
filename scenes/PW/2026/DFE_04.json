@@ -997,7 +997,7 @@
 		{
 			"id": "DiffuseSensorBox_4",
 			"type": "https://w3id.org/ontoeng/factory#SensorBarrier",
-			"position": [2327.83, 146.15, -803.19],
+			"position": [2327.83, 146.15, -784.27],
 			"rotation": [-1.5707963267948966, 4.71239, 0],
 			"placementRelTo": "building",
 			"container": "building",
