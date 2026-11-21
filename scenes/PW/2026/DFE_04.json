@@ -1387,7 +1387,7 @@
       "placementRelTo": "building",
       "properties": {
 				"friction": 0.95,
-				"restitution": 0.1,
+				"restitution": 0.6,
 				"mass": 20
 			}
     },
@@ -1458,20 +1458,10 @@
           },
                              "pick":  {
                                  "on":  {
-               "goPlaceR":  "placeR" ,
+               "MoveToR":  "moveR" ,
                "goRest":  "rest" 
             },
                                  "entry":  [
-                                  {
-                "action": "setMotionType",
-                "target": "part_01",
-                "MotionType": "ANIMATED"
-            },
-            {
-                "action": "setParent",
-                "parentObject": "CustomBox",
-                "childObject": "part_01"
-            },
                      {
                  "action":  "moveTo",
                  "target":  "PP.FloatingZLarge",
@@ -1496,11 +1486,41 @@
               },
                       {
 								  "action":  "sendEvent",
-                  "event":  "goPlaceR",
+                  "event":  "MoveToR",
                   "to":  "PPLarge_SC",
                 "delay": 3000
 							}      
             ]                
+          },
+                             "MoveToR":  {
+                                 "on":  {
+               "goRest":  "rest", 
+               "goPlaceR": "placeR"
+            },
+                                 "entry":  [
+                                       {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingZLarge",
+                 "position":  [-120, 80, 0] 
+              },
+                        {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingYLarge",
+                 "position":  [-6, -80, -171]
+              },
+                         {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingXLarge",
+                 "position":  [-244, 369, 370],
+                 "rotation": [0, -1.5708, 0]
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "goPlaceR",
+                  "to":  "PPLarge_SC",
+                "delay": 1000
+							}
+            ]                                        
           },
                              "placeR":  {
                                  "on":  {
@@ -1515,7 +1535,7 @@
                         {
                  "action":  "moveTo",
                  "target":  "PP.FloatingYLarge",
-                 "position":  [-6, -80, -171]
+                 "position":  [-6, -220, -171]
               },
                          {
                  "action":  "moveTo",
