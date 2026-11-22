@@ -1,0 +1,2 @@
+In order to work on this project, I cloned the original difactory repository into my account and I've modified and uploaded everything in there. 
+It is available at the link https://github.com/Mocche13/DF_Project.git (also available in the report).
