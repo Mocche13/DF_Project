@@ -52,11 +52,7 @@
     "PP.FloatingYLarge",
     "PP.GripperLarge",
     "PP.Finger1Large",
-    "PP.Finger2Large",
-    "SignalPole",
-		"SignalPole.GreenLight",
-		"SignalPole.RedLight",
-		"SignalPole.YellowLight"
+    "PP.Finger2Large"
   ],
    "assets":  [
     {
@@ -95,13 +91,7 @@
                                            "action":  "surfaceVelocity",
                                            "target":  "B1",
                                            "velocity":  [0, 0, 0]                         
-            },
-            
-                                        {
-                                            "action":  "sendEvent",
-                                            "event":  "switchOnYellow",
-                                            "to":  "TrafficLights_SC"
-							}  
+            } 
                                      ]                   
           },
                                "forward":  {
@@ -113,13 +103,7 @@
                                            "action":  "surfaceVelocity",
                                            "target":  "B1",
                                            "velocity":  [0, 0, 100]                         
-            },
-            
-                                        {
-                                            "action":  "sendEvent",
-                                            "event":  "switchOnGreen",
-                                            "to":  "TrafficLights_SC"
-							}  
+            }  
                                      ]                   
           },
                                "backward":  {
@@ -1117,7 +1101,7 @@
 							}
             ],
               "after": {
-              "3000": [
+              "5000": [
                 {
                    "target": "JobDone",
                   "cond": { "type": "evaluateExpression", "expr": "$pickCounter >= 10" }

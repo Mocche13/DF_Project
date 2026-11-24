@@ -45,6 +45,7 @@
     "PP.Finger13",
     "PP.Finger23",
     "CustomBox",
+    "Separator",
     "PPLarge",
     "PP.FloatingXLarge",
     "PP.FloatingZLarge",
@@ -174,7 +175,7 @@
                                      "entry":  {
                                            "action":  "surfaceVelocity",
                                            "target":  "B2",
-                                           "velocity":  [0, 0, 130]                         
+                                           "velocity":  [0, 0, 110]                         
             }                     
           },
                                "backward":  {
@@ -996,7 +997,7 @@
 		{
 			"id": "DiffuseSensorBox_4",
 			"type": "https://w3id.org/ontoeng/factory#SensorBarrier",
-			"position": [2327.83, 146.15, -803.19],
+			"position": [2327.83, 146.15, -784.27],
 			"rotation": [-1.5707963267948966, 4.71239, 0],
 			"placementRelTo": "building",
 			"container": "building",
@@ -1031,7 +1032,8 @@
               {
 								"action":  "sendEvent",
                 "event":  "goPick",
-                "to":  "PPLarge_SC"
+                "to":  "PPLarge_SC",
+              "delay": 3000
 							}
 						],
 						"type": "atomic"
@@ -1112,8 +1114,16 @@
 								  "action":  "sendEvent",
                   "event":  "Stopper1_Up",
                   "to":  "Stopper_1_SC"
-							}                    
-            ]                  
+							}
+            ],
+              "after": {
+              "3000": [
+                {
+                   "target": "JobDone",
+                  "cond": { "type": "evaluateExpression", "expr": "$pickCounter >= 10" }
+                }
+              ]
+            }                                                      
           },
                              "pick":  {
                                  "on":  {
@@ -1193,7 +1203,7 @@
 								  "action":  "sendEvent",
                   "event":  "B2startF",
                   "to":  "B2_SC",
-                 "delay": 500
+                 "delay": 1000
 							}, 
                      {
                  "action":  "moveTo",
@@ -1240,7 +1250,7 @@
 								  "action":  "sendEvent",
                   "event":  "B2startF",
                   "to":  "B2_SC",
-                 "delay": 2000
+                 "delay": 1000
 							} ,             
                      {
                  "action":  "moveTo",
@@ -1261,8 +1271,20 @@
                 "delay": 5000
 							}
             ]                                        
-          }                 
-        }               
+          },
+                  "JobDone": {
+                    "on":  {
+               "goRest":  "rest" 
+            },
+                                 "entry":  [
+                                       {
+                  "action":  "sendEvent",
+                  "event":  "B3startB",
+                  "to":  "B3_SC"
+                    }
+                ]            
+              }               
+        }
       }
     },
     {
@@ -1360,14 +1382,28 @@
           "unit": 1
         }
       ],
-      "position": [2245.13, 159.16, 884.84],
+      "position": [2249.5, 160, 884.84],
       "rotation": [0, 0, 0],
       "placementRelTo": "building",
       "properties": {
 				"friction": 0.95,
-				"restitution": 0.1,
-				"mass": 6
+				"restitution": 0.6,
+				"mass": 20
 			}
+    },
+    {
+      "id":  "Separator",
+      "type": "https://w3id.org/ontoeng/factory#Artifact",
+      "position": [0, 0, -60],
+			"rotation": [0, 0, 0],
+      "representations": [
+        {
+          "file": "Separator.glb",
+          "unit": 1
+        }
+      ],
+      "placementRelTo": "CustomBox",
+      "parentObject": "CustomBox"
     },
     {
       "id":  "PPLarge",
@@ -1422,7 +1458,7 @@
           },
                              "pick":  {
                                  "on":  {
-               "goPlaceR":  "placeR" ,
+               "MoveToR":  "moveR" ,
                "goRest":  "rest" 
             },
                                  "entry":  [
@@ -1450,11 +1486,41 @@
               },
                       {
 								  "action":  "sendEvent",
-                  "event":  "goPlaceR",
+                  "event":  "MoveToR",
                   "to":  "PPLarge_SC",
                 "delay": 3000
 							}      
             ]                
+          },
+                             "moveR":  {
+                                 "on":  {
+               "goRest":  "rest", 
+               "goPlaceR": "placeR"
+            },
+                                 "entry":  [
+                                       {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingZLarge",
+                 "position":  [-120, 80, 0] 
+              },
+                        {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingYLarge",
+                 "position":  [-6, -80, -171]
+              },
+                         {
+                 "action":  "moveTo",
+                 "target":  "PP.FloatingXLarge",
+                 "position":  [-244, 369, 370],
+                 "rotation": [0, -1.5708, 0]
+              },
+                      {
+								  "action":  "sendEvent",
+                  "event":  "goPlaceR",
+                  "to":  "PPLarge_SC",
+                "delay": 1000
+							}
+            ]                                        
           },
                              "placeR":  {
                                  "on":  {
@@ -1469,7 +1535,7 @@
                         {
                  "action":  "moveTo",
                  "target":  "PP.FloatingYLarge",
-                 "position":  [-6, -80, -171]
+                 "position":  [-6, -220, -171]
               },
                          {
                  "action":  "moveTo",
